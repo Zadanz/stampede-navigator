@@ -1,0 +1,45 @@
+/* Style Sheet */
+/* Set default font and color */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px;
+    
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: brown;
+    color: white;
+    margin: 20px;
+    margin-top: 0px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: maroon;
+    color: white;
+    margin: 20px;
+    margin-top: 0px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: brown;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
