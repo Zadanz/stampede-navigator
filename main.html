@@ -19,10 +19,23 @@
         <p>Take</p>
         <p>Receive</p>
       </div>
-      <div class="panel panel3">
-        <p>Experience</p>
-        <p>It</p>
-        <p>Today</p>
+      <div class="panel schedule">
+        <div class="calendar">
+          <div class="calendar__hour-grid">
+            <template id="template-hour">
+              <div class="calendar__hour">
+                <p class="label"></p>
+              </div>
+            </template>
+          </div>
+          <div class="calendar__events">
+            <template id="template-event">
+              <div class="calendar__event">
+                <p class="label"></p>
+              </div>
+            </template>
+          </div>
+        </div>
       </div>
       <div class="panel panel4">
         <p>Give</p>
@@ -55,6 +68,83 @@ panels.forEach(panel => panel.addEventListener('click', toggleOpen));
 panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
 
+//Schedule JS
+const startHour = 8;
+const endHour = 18;
+const resolution = 2;
+const currentHour = 12;
+const currentMinute = 25;
+
+
+const hourTemplate = document.querySelector(
+  '#template-hour');
+const hourGrid = document.querySelector(
+  '.calendar__hour-grid');
+for (let i = startHour; i < endHour; i++) {
+  const hourNode = hourTemplate.content
+    .firstElementChild.cloneNode(true);
+  hourGrid.appendChild(hourNode);
+
+  hourNode.querySelector('.label')
+    .innerText = `${i}`.padStart(2, '0');
+
+  if (currentHour === i) {
+    hourNode.classList.add('active');
+    hourNode.style.setProperty(
+      '--current-minute', currentMinute
+    );
+  }
+}
+
+const events = [
+  {
+    start: 8,
+    end: 10,
+    title: 'Focus Time',
+    past: true,
+  },
+  {
+    start: 10.5,
+    end: 11.5,
+    title: '1:1 with Tamika',
+    past: true,
+  },
+  {
+    start: 14,
+    end: 15,
+    title: 'Technical Weekly',
+  },
+];
+const eventTemplate = document
+  .querySelector('#template-event');
+const calendarEvents = document
+  .querySelector('.calendar__events');
+const calendar = document
+  .querySelector('.calendar');
+
+calendar.style.setProperty(
+  '--start-hour', startHour);
+calendar.style.setProperty(
+  '--end-hour', endHour);
+calendar.style.setProperty(
+  '--resolution', resolution);
+
+events.forEach((event) => {
+  const eventNode = eventTemplate.content
+    .firstElementChild.cloneNode(true);
+  calendarEvents.appendChild(eventNode);
+
+  eventNode.querySelector('.label')
+    .innerText = event.title;
+  eventNode.style.setProperty(
+    '--start', event.start);
+  eventNode.style.setProperty(
+    '--end', event.end);
+  if (event.past) {
+    eventNode.classList.add('past');
+  }
+});
+//Schedule JS End
     </script>
 </body>
 </html>
