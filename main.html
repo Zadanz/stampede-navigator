@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-
 <body>
 
     <header>
-        <div class="title" style="padding: 20px;"> 
+        <div class="title" style="padding: 20px;">
             <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
         </div>
     </header>
@@ -20,13 +18,13 @@
 
     <div class="wrapper side-panel-open">
         <div class="side-panel2">
+            <!-- Rest of the content in the side panel -->
             something in the side panel
         </div>
         <button class="side-panel2-toggle" type="button">
             <span class="material-icons sp2-icon-open">keyboard_double_arrow_right</span>
             <span class="material-icons sp2-icon-close">keyboard_double_arrow_left</span>
         </button>
-        
 
         <div class="main">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
@@ -41,22 +39,88 @@
             <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
         </button>
         <div class="side-panel">
-            text in here too
+            <div class="search-filter">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <select id="filterOptions">
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <!-- Add more filter options as needed -->
+                </select>
+                <button onclick="applyFilter()">Apply Filter</button>
+            </div>
+            <h2>Filter DIV Elements</h2>
+
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
+                <label><input type="checkbox" id="timesCheckbox"> Time</label>
+                <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
+            </div>
+
+            <div class="container">
+                <div class="filterDiv locations">Venue A</div>
+                <div class="filterDiv times">Morning</div>
+                <div class="filterDiv eventTypes">Family</div>
+                <div class="filterDiv locations">Venue B</div>
+                <div class="filterDiv times">Afternoon</div>
+                <div class="filterDiv eventTypes">Children</div>
+                <div class="filterDiv locations">Venue C</div>
+                <div class="filterDiv times">Evening</div>
+                <div class="filterDiv eventTypes">Adult only</div>
+            </div>
         </div>
-        
+
     </div>
 
-
-
     <script>
+        function applyFilter() {
+            var searchValue = document.getElementById("searchInput").value.toLowerCase();
+            var filterOption = document.getElementById("filterOptions").value.toLowerCase();
+
+            // Implement your filtering logic here for the side-panel
+            // For example, you can get elements by class and hide/show them based on filter criteria
+            // var elements = document.querySelectorAll('.side-panel .your-elements-selector');
+            // elements.forEach(element => {
+            //     // Implement your logic to hide/show elements based on the filter criteria
+            // });
+
+            // Placeholder alert
+            alert("Filter applied to side-panel: Search - " + searchValue + ", Filter - " + filterOption);
+        }
+
         document.querySelector(".side-panel-toggle").addEventListener("click", () => {
-        document.querySelector(".wrapper").classList.toggle("side-panel-open");
+            document.querySelector(".wrapper").classList.toggle("side-panel-open");
         });
 
         document.querySelector(".side-panel2-toggle").addEventListener("click", () => {
-        document.querySelector(".wrapper").classList.toggle("side-panel2-open");
+            document.querySelector(".wrapper").classList.toggle("side-panel2-open");
         });
 
+        function filterSelection() {
+            var locationsChecked = document.getElementById("locationsCheckbox").checked;
+            var timesChecked = document.getElementById("timesCheckbox").checked;
+            var eventTypesChecked = document.getElementById("eventTypesCheckbox").checked;
+
+            var x, i;
+            x = document.querySelectorAll('.container .filterDiv');
+
+            for (i = 0; i < x.length; i++) {
+                var categories = x[i].classList;
+                var showElement =
+                    (locationsChecked && categories.contains('locations')) ||
+                    (timesChecked && categories.contains('times')) ||
+                    (eventTypesChecked && categories.contains('eventTypes'));
+
+                x[i].style.display = showElement ? 'block' : 'none';
+            }
+        }
+
+        // Add event listeners to the checkboxes
+        document.getElementById("locationsCheckbox").addEventListener("change", filterSelection);
+        document.getElementById("timesCheckbox").addEventListener("change", filterSelection);
+        document.getElementById("eventTypesCheckbox").addEventListener("change", filterSelection);
+
+        // Trigger the initial filtering
+        filterSelection();
     </script>
 </body>
 
