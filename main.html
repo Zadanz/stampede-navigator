@@ -5,44 +5,56 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="title" style="padding: 20px;"> 
-            <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
-            <h1>This is a template homepage!</h1>
-        </div>
-    </header>
-    <div class="container">
-        <div class="nav">
-            <h3><a href="main.html">Home</a></h3>
-            <h3><a href="#">Information</a></h3> <!-- Where the # is you would link another page, like Info.html or something-->
-            <h3><a href="#">Services</a></h3>
-            <h3><a href="#">Contact</a></h3>
-            <h3><input type="search" placeholder="Search"> </h3>
-        </div>
 
-        
-        <main>
-            <section>
-                <h2>Information</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eu tincidunt tincidunt, nunc nunc ultrices nunc, nec lacinia nunc nunc ut nunc.</p>
-            </section>
-            
-            <section>
-                <h2>Services</h2>
-                <ul>
-                    <li>stuff</li>
-                    <li>other stuff</li>
-                    <li>thing</li>
-                </ul>
-            </section>
-            
-            <section>
-                <h2>Contact</h2>
-                <p>Phone: 123-456-7890</p>
-                <p>Email: person@emaple.com</p>
-                <p>Address: 1234 Example St.</p>
-            </section>
-        </main>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+
+    <div class="panels">
+      <div class="panel panel1">
+        <p>Hey</p>
+        <p>Let's</p>
+        <p>Dance</p>
+      </div>
+      <div class="panel panel2">
+        <p>Give</p>
+        <p>Take</p>
+        <p>Receive</p>
+      </div>
+      <div class="panel panel3">
+        <p>Experience</p>
+        <p>It</p>
+        <p>Today</p>
+      </div>
+      <div class="panel panel4">
+        <p>Give</p>
+        <p>All</p>
+        <p>You can</p>
+      </div>
+      <div class="panel panel5">
+        <p>Life</p>
+        <p>In</p>
+        <p>Motion</p>
+      </div>
     </div>
+
+
+    <script>
+    const panels = document.querySelectorAll('.panel');
+
+function toggleOpen() {
+  this.classList.toggle('open');
+}
+
+function toggleActive(e) {
+  console.log(e.propertyName);
+  if(e.propertyName.includes('flex')) {
+   this.classList.toggle('open-active'); 
+ }
+}
+
+panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+
+    </script>
 </body>
 </html>
