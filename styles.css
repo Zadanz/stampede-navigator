@@ -17,10 +17,13 @@ body {
 
 .side-panel-toggle {
   width: 40px;
-  height: 40px;
+  height: 100%;
   flex-shrink: 0;
   display: grid;
   place-items: center;
+
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
 
   color: #ffffff;
   background: #009578;
@@ -66,9 +69,12 @@ body {
 
 .side-panel2-toggle {
   width: 40px;
-  height: 40px;
+  height: 100%;
   display: grid;
   place-items: center;
+
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
 
   color: #ffffff;
   background: #950077;
@@ -113,9 +119,12 @@ body {
 
 .side-panel3-toggle {
   width: 40px;
-  height: 40px;
+  height: 100%;
   display: grid;
   place-items: center;
+
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
 
   color: #ffffff;
   background: #1e0095;
