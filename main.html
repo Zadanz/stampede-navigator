@@ -1,69 +1,62 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
+
 <body>
 
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <header>
+        <div class="title" style="padding: 20px;"> 
+            <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
+        </div>
+    </header>
 
-    <div class="panels">
-        <div class="panel panel1 open">
-            <p>Hey</p>
-            <p>Let's</p>
-            <p>Dance</p>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <div class="wrapper side-panel-open">
+        <div class="side-panel2">
+            something in the side panel
         </div>
-        <div class="panel panel2 open">
-            <p>Give</p>
-            <p>Take</p>
-            <p>Receive</p>
-        </div>
-        <div class="panel panel3 open">
-            <p>Experience</p>
-            <p>It</p>
-            <p>Today</p>
-        </div>
-        <div class="panel panel4 open">
-            <p>Give</p>
-            <p>All</p>
-            <p>You can</p>
+        <button class="side-panel2-toggle" type="button">
+            <span class="material-icons sp2-icon-open">keyboard_double_arrow_right</span>
+            <span class="material-icons sp2-icon-close">keyboard_double_arrow_left</span>
+        </button>
+        
+
+        <div class="main">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
         </div>
 
-        <!-- Search and Filter Menu -->
-        <div class="panel panel5 open">
-            <h1>Filtering Example</h1>
-            <ul class="filterSection">
-                <li>
-                    <strong>Show:</strong>
-                    <input checked="true" type="checkbox" value="food" />
-                    <label>Food</label>
-                </li>
-                <li>
-                    <input checked="true" type="checkbox" value="place" />
-                    <label>Place</label>
-                </li>
-                <li>
-                    <input checked="true" type="checkbox" value="musician" />
-                    <label>Musician</label>
-                </li>
-            </ul>
+        <button class="side-panel-toggle" type="button">
+            <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+            <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+        </button>
+        <div class="side-panel">
+            text in here too
         </div>
+        
     </div>
 
+
+
     <script>
-        // Remove the toggleOpen function
-        const panels = document.querySelectorAll('.panel');
+        document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+        document.querySelector(".wrapper").classList.toggle("side-panel-open");
+        });
 
-        function toggleActive(e) {
-            if (e.propertyName.includes('flex')) {
-                this.classList.toggle('open-active');
-            }
-        }
+        document.querySelector(".side-panel2-toggle").addEventListener("click", () => {
+        document.querySelector(".wrapper").classList.toggle("side-panel2-open");
+        });
 
-        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
     </script>
 </body>
 
