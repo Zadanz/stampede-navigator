@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -19,7 +20,10 @@
 
     <div class="wrapper side-panel-open">
         <div class="side-panel2">
-            something in the side panel
+            <h3>My Schedule</h3>
+
+            
+
         </div>
         <button class="side-panel2-toggle" type="button">
             <span class="material-icons sp2-icon-open">keyboard_double_arrow_right</span>
@@ -27,7 +31,44 @@
         </button>
 
         <div class="side-panel3">
-            something in the side panel
+            <h3>All Events</h3>
+            <button type="button" class="collapsible">
+                    Dog Bowl 
+                    <button type="button" class="activitytime">11:30am</button>
+                    <button type="button" class="activitytime">2:00pm</button>
+                    <button type="button" class="activitytime">3:30pm</button>
+            </button>
+            <div class="content">
+              <p>little buys jumping and weaving in the saddledome</p>
+            </div> 
+
+            <button type="button" class="collapsible">Motor Bikes
+                <button type="button" class="activitytime">11:30am</button>
+                <button type="button" class="activitytime">2:00pm</button>
+                <button type="button" class="activitytime">3:30pm</button>
+            </button>
+            <div class="content">
+              <p>vroom vroom</p>
+            </div> 
+
+            <button type="button" class="collapsible">Chuck Wagon
+                <button type="button" class="activitytime">11:30am</button>
+                <button type="button" class="activitytime">2:00pm</button>
+                <button type="button" class="activitytime">3:30pm</button>
+            </button>
+            <div class="content">
+              <p>woah!?! horses and carts! at the GMC stadium</p>
+            </div> 
+
+            <button type="button" class="collapsible">A band thats playing
+                <button type="button" class="activitytime">11:30am</button>
+                <button type="button" class="activitytime">2:00pm</button>
+                <button type="button" class="activitytime">3:30pm</button>
+            </button>
+            <div class="content">
+              <p>This band is super cool, theyre playing at the coca cola stage</p>
+            </div> 
+
         </div>
         <button class="side-panel3-toggle" type="button">
             <span class="material-icons sp3-icon-open">keyboard_double_arrow_right</span>
@@ -36,11 +77,24 @@
         
 
         <div class="main">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+            <head>
+                <!-- The callback parameter is required, so we use console.debug as a noop -->
+                <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDp9c_dJmtP7usaLoIjRNW1Iq8Wi0mlTxQ&callback=console.debug&libraries=maps,marker&v=beta">
+                </script>
+              </head>
+              <body>
+                <gmp-map center="51.03732681274414,-114.05403900146484" zoom="16" map-id="DEMO_MAP_ID">
+                    <gmp-advanced-marker position="51.03948211669922,-114.05632781982422" title="BMO Center">
+                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+                    </gmp-advanced-marker>
+                    <gmp-advanced-marker position="51.037445068359375,-114.05194091796875" title="Scotiabank Sattledome">
+                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+                    </gmp-advanced-marker>
+                    <gmp-advanced-marker position="51.03622055053711,-114.05810546875" title="Big 4">
+                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+                    </gmp-advanced-marker>
+                  </gmp-map>
+              </body>
         </div>
 
         <button class="side-panel-toggle" type="button">
@@ -48,7 +102,7 @@
             <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
         </button>
         <div class="side-panel">
-            text in here too
+            <h3>Filters</h3>
         </div>
         
     </div>
@@ -69,6 +123,22 @@
         document.querySelector(".wrapper").classList.toggle("side-panel3-open");
         });
 
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+        });
+        } 
+       
     </script>
 </body>
 

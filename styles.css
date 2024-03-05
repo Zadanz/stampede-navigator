@@ -91,7 +91,7 @@ body {
   width: 300px;
   flex-shrink: 0;
   flex-grow: 10;
-  padding: 0px;
+  padding: 20px;
   color: #ffffff;
   background: #950095;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
@@ -135,10 +135,10 @@ body {
 
 .side-panel3 {
   display: none;
-  width: 300px;
+  width: 300px !important;
   flex-shrink: 0;
   flex-grow: 10;
-  padding: 0px;
+  padding: 20px;
   color: #ffffff;
   background: #250095;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
@@ -167,4 +167,53 @@ body {
   margin-top: 0px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  color: black;
+}
+
+
+.activitytime {
+  background-color: #c00000;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  width: 32.4%;
+  font-size: 15px;
+}
+
+.active, .activitytime:hover {
+  background-color: #820000;
+}
+
+
+
+gmp-map {
+  height: 100%;
+  min-width: 600px;
 }
