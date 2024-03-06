@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-
-<body>
-
+  <head>
+      <title>Home</title>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
     <header>
         <div class="title" style="padding: 20px;"> 
             <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
         </div>
     </header>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="wrapper side-panel-open">
         <div class="side-panel2">
         <body>
@@ -135,125 +130,41 @@
         </div>
         
     </div>
+</body>
+</html>
 
-    <script>
-        document.querySelector(".side-panel-toggle").addEventListener("click", () => {
-        document.querySelector(".wrapper").classList.toggle("side-panel-open");
-        });
+<script>
+  document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+  document.querySelector(".wrapper").classList.toggle("side-panel-open");
+  });
 
-        document.querySelector(".side-panel2-toggle").addEventListener("click", () => {
-        document.querySelector(".wrapper").classList.toggle("side-panel2-open");
-        });
-
-
-        document.querySelector(".side-panel3-toggle").addEventListener("click", () => {
-        document.querySelector(".wrapper").classList.toggle("side-panel3-open");
-        });
+  document.querySelector(".side-panel2-toggle").addEventListener("click", () => {
+  document.querySelector(".wrapper").classList.toggle("side-panel2-open");
+  });
 
 
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
+  document.querySelector(".side-panel3-toggle").addEventListener("click", () => {
+  document.querySelector(".wrapper").classList.toggle("side-panel3-open");
+  });
 
-        for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-            content.style.display = "none";
-            } else {
-            content.style.display = "block";
-            }
-        });
-        } 
+
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+      content.style.display = "none";
+      } else {
+      content.style.display = "block";
+      }
+  });
+  } 
        
 //Schedule JS
-const startHour = 8;
-const endHour = 18;
-const resolution = 2;
-const currentHour = 12;
-const currentMinute = 25;
-
-
-const hourTemplate = document.querySelector(
-  '#template-hour');
-const hourGrid = document.querySelector(
-  '.calendar__hour-grid');
-for (let i = startHour; i < endHour; i++) {
-  const hourNode = hourTemplate.content
-    .firstElementChild.cloneNode(true);
-  hourGrid.appendChild(hourNode);
-
-  hourNode.querySelector('.label')
-    .innerText = `${i}`.padStart(2, '0');
-
-  if (currentHour === i) {
-    hourNode.classList.add('active');
-    hourNode.style.setProperty(
-      '--current-minute', currentMinute
-    );
-  }
-}
-
-const events = [
-  {
-    start: 8,
-    end: 10,
-    title: 'Focus Time',
-    past: true,
-  },
-  {
-    start: 10.5,
-    end: 11.5,
-    title: '1:1 with Tamika',
-    past: true,
-  },
-  {
-    start: 14,
-    end: 15,
-    title: 'Technical Weekly',
-  },
-];
-const eventTemplate = document
-  .querySelector('#template-event');
-const calendarEvents = document
-  .querySelector('.calendar__events');
-const calendar = document
-  .querySelector('.calendar');
-
-calendar.style.setProperty(
-  '--start-hour', startHour);
-calendar.style.setProperty(
-  '--end-hour', endHour);
-calendar.style.setProperty(
-  '--resolution', resolution);
-
-events.forEach((event) => {
-  const eventNode = eventTemplate.content
-    .firstElementChild.cloneNode(true);
-  calendarEvents.appendChild(eventNode);
-
-  eventNode.querySelector('.label')
-    .innerText = event.title;
-  eventNode.style.setProperty(
-    '--start', event.start);
-  eventNode.style.setProperty(
-    '--end', event.end);
-  if (event.past) {
-    eventNode.classList.add('past');
-  }
-});
-//Schedule JS End
-    </script>
-</body>
-
-</html>
-
-<html>
-
-</html>
-  
-<script>
-  const startHour = 7;
+const startHour = 7;
   const endHour = 24;
   const resolution = 2;
   const currentHour = 12;
@@ -272,7 +183,7 @@ events.forEach((event) => {
       .innerText = `${i}`.padStart(2, '0');
   
     if (currentHour === i) {
-      hourNode.classList.add('active');
+      hourNode.classList.add('current');
       hourNode.style.setProperty(
         '--current-minute', currentMinute
       );
@@ -327,4 +238,5 @@ events.forEach((event) => {
       eventNode.classList.add('past');
     }
   });
+//Schedule JS End
 </script>
