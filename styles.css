@@ -20,7 +20,6 @@ body {
 .side-panel-toggle {
   width: 40px;
   height: 100%;
-  flex-shrink: 0;
   display: grid;
   place-items: center;
 
@@ -45,14 +44,12 @@ body {
 
 .side-panel {
   display: none;
-  width: 200px;
-  flex-shrink: 0;
+  width: 270px;
   padding: 20px;
   color: #ffffff;
   background: #009578;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
-
 
 .side-panel-open .side-panel {
   display: initial;
@@ -66,9 +63,6 @@ body {
   display: initial !important;
 }
 
-
-
-
 .side-panel2-toggle {
   width: 40px;
   height: 100%;
@@ -81,7 +75,6 @@ body {
   color: #ffffff;
   background: #950077;
   border: none;
-  border-radius: 0 5px 5px 0;
   outline: none;
   cursor: pointer;
 }
@@ -96,9 +89,8 @@ body {
 
 .side-panel2 {
   display: none;
-  width: 300px;
-  flex-shrink: 0;
-  flex-grow: 10;
+  width: 20%;
+  min-width: 250px;
   padding: 20px;
   color: #ffffff;
   background: #950095;
@@ -117,7 +109,6 @@ body {
 .side-panel2-open .sp2-icon-close {
   display: initial !important;
 }
-
 
 .side-panel3-toggle {
   width: 40px;
@@ -146,15 +137,13 @@ body {
 
 .side-panel3 {
   display: none;
-  width: 300px !important;
-  flex-shrink: 0;
-  flex-grow: 10;
+  width: 20% !important;
   padding: 20px;
+  min-width: 300px;
   color: #ffffff;
   background: #250095;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
 }
-
 
 .side-panel3-open .side-panel3 {
   display: initial;
@@ -167,7 +156,6 @@ body {
 .side-panel3-open .sp3-icon-close {
   display: initial !important;
 }
-
 
 .title {
   display: flex;
@@ -285,10 +273,10 @@ section > *:nth-child(2) {
 }
 
 section {
-  width: 20rem;
-  height: 50rem;
+  width: 100%;
+  height: 90%;
   padding: 0;
-  margin: 0;
+  margin: auto;
   box-sizing: border-box;
 }
 
