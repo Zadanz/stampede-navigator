@@ -6,7 +6,7 @@
   </head>
   <body>
     <header>
-        <div class="title" style="padding: 20px;"> 
+        <div class="title" style="padding: 20px;">
             <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
         </div>
     </header>
@@ -96,7 +96,6 @@
             
             <span class="material-icons sp3-icon-close">keyboard_double_arrow_down</span>
         </button>
-        
 
         <div class="main">
             <head>
@@ -126,13 +125,94 @@
             <span class="material-icons sp-icon-close">keyboard_double_arrow_up</span>
         </button>
         <div class="side-panel">
-            <h2>Filters</h2>
+            <div class="search-filter">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <select id="filterOptions">
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <!-- Add more filter options as needed -->
+                </select>
+                <button onclick="applyFilter()">Apply Filter</button>
+            </div>
+            <h2>Filter DIV Elements</h2>
+
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
+                <label><input type="checkbox" id="timesCheckbox"> Time</label>
+                <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
+            </div>
+
+            <div class="container">
+                <div class="filterDiv locations">Venue A</div>
+                <div class="filterDiv times">Morning</div>
+                <div class="filterDiv eventTypes">Family</div>
+                <div class="filterDiv locations">Venue B</div>
+                <div class="filterDiv times">Afternoon</div>
+                <div class="filterDiv eventTypes">Children</div>
+                <div class="filterDiv locations">Venue C</div>
+                <div class="filterDiv times">Evening</div>
+                <div class="filterDiv eventTypes">Adult only</div>
+            </div>
         </div>
-        
+
     </div>
 </body>
 </html>
 
+    <script>
+        function applyFilter() {
+            var searchValue = document.getElementById("searchInput").value.toLowerCase();
+            var filterOption = document.getElementById("filterOptions").value.toLowerCase();
+
+            // Implement your filtering logic here for the side-panel
+            // For example, you can get elements by class and hide/show them based on filter criteria
+            // var elements = document.querySelectorAll('.side-panel .your-elements-selector');
+            // elements.forEach(element => {
+            //     // Implement your logic to hide/show elements based on the filter criteria
+            // });
+
+            // Placeholder alert
+            alert("Filter applied to side-panel: Search - " + searchValue + ", Filter - " + filterOption);
+        }
+
+        document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+            document.querySelector(".wrapper").classList.toggle("side-panel-open");
+        });
+
+        document.querySelector(".side-panel2-toggle").addEventListener("click", () => {
+            document.querySelector(".wrapper").classList.toggle("side-panel2-open");
+        });
+
+        function filterSelection() {
+            var locationsChecked = document.getElementById("locationsCheckbox").checked;
+            var timesChecked = document.getElementById("timesCheckbox").checked;
+            var eventTypesChecked = document.getElementById("eventTypesCheckbox").checked;
+
+            var x, i;
+            x = document.querySelectorAll('.container .filterDiv');
+
+            for (i = 0; i < x.length; i++) {
+                var categories = x[i].classList;
+                var showElement =
+                    (locationsChecked && categories.contains('locations')) ||
+                    (timesChecked && categories.contains('times')) ||
+                    (eventTypesChecked && categories.contains('eventTypes'));
+
+                x[i].style.display = showElement ? 'block' : 'none';
+            }
+        }
+
+        // Add event listeners to the checkboxes
+        document.getElementById("locationsCheckbox").addEventListener("change", filterSelection);
+        document.getElementById("timesCheckbox").addEventListener("change", filterSelection);
+        document.getElementById("eventTypesCheckbox").addEventListener("change", filterSelection);
+
+        // Trigger the initial filtering
+        filterSelection();
+    </script>
+</body>
+
+</html>
 <script>
   document.querySelector(".side-panel-toggle").addEventListener("click", () => {
   document.querySelector(".wrapper").classList.toggle("side-panel-open");
