@@ -45,25 +45,93 @@
         </body>
         </div>
         <button class="side-panel2-toggle" type="button">
-            <span class="material-icons sp2-icon-open">keyboard_double_arrow_right</span>
-            <span class="material-icons sp2-icon-close">keyboard_double_arrow_left</span>
+            <span class="sp2-icon-open">My Schedule</span>
+            <span class="material-icons sp2-icon-open">keyboard_double_arrow_up</span>
+            
+            <span class="material-icons sp2-icon-close">keyboard_double_arrow_down</span>
+        </button>
+
+        <div class="side-panel3">
+            <h3>All Events</h3>
+            <button type="button" class="collapsible">
+                    Dog Bowl      
+            </button>
+            <div class="content">
+                <p>little buys jumping and weaving in the saddledome</p>
+            </div> 
+            <button type="button" class="activitytime">11:30am</button>
+            <button type="button" class="activitytime">2:00pm</button>
+            <button type="button" class="activitytime">3:30pm</button>
+            <p></p>
+
+            <button type="button" class="collapsible">Motor Bikes
+            </button>
+            <div class="content">
+                <p>vroom vroom</p>
+            </div> 
+            <button type="button" class="activitytime">11:30am</button>
+            <button type="button" class="activitytime">2:00pm</button>
+            <button type="button" class="activitytime">3:30pm</button>
+            <p></p>
+
+            <button type="button" class="collapsible">Chuck Wagon
+            </button>
+            <div class="content">
+                <p>woah!?! horses and carts! at the GMC stadium</p>
+            </div> 
+            <button type="button" class="activitytime">11:30am</button>
+            <button type="button" class="activitytime">2:00pm</button>
+            <button type="button" class="activitytime">3:30pm</button>
+            <p></p>
+
+            <button type="button" class="collapsible">A band thats playing
+            </button>
+            <div class="content">
+                <p>This band is super cool, theyre playing at the coca cola stage</p>
+            </div> 
+            <button type="button" class="activitytime">11:30am</button>
+            <button type="button" class="activitytime">2:00pm</button>
+            <button type="button" class="activitytime">3:30pm</button>
+            <p></p>
+
+        </div>
+        <button class="side-panel3-toggle" type="button">
+            <span class="sp3-icon-open">All Events</span>
+            <span class="material-icons sp3-icon-open">keyboard_double_arrow_up</span>
+            
+            <span class="material-icons sp3-icon-close">keyboard_double_arrow_down</span>
         </button>
         
 
         <div class="main">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veniam sapiente quos explicabo, laborum libero placeat dignissimos temporibus dicta minus! Saepe quam debitis et. Corporis quod accusantium voluptatem ea pariatur?
+            <head>
+                <!-- The callback parameter is required, so we use console.debug as a noop -->
+                <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDp9c_dJmtP7usaLoIjRNW1Iq8Wi0mlTxQ&callback=console.debug&libraries=maps,marker&v=beta">
+                </script>
+              </head>
+              <body>
+                <gmp-map center="51.03732681274414,-114.05403900146484" zoom="16" map-id="DEMO_MAP_ID">
+                    <gmp-advanced-marker position="51.03948211669922,-114.05632781982422" title="BMO Center">
+                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+                    </gmp-advanced-marker>
+                    <gmp-advanced-marker position="51.037445068359375,-114.05194091796875" title="Scotiabank Sattledome">
+                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+                    </gmp-advanced-marker>
+                    <gmp-advanced-marker position="51.03622055053711,-114.05810546875" title="Big 4">
+                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+                    </gmp-advanced-marker>
+                  </gmp-map>
+              </body>
         </div>
 
-        <button class="side-panel-toggle" type="button">
-            <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
-            <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+        <button class="side-panel-toggle" type="button" title="Filters">
+            <span class="material-icons sp-icon-open">keyboard_double_arrow_down</span>
+            <span class="sp-icon-open">Filters</span>
+            
+            <span class="material-icons sp-icon-close">keyboard_double_arrow_up</span>
         </button>
         <div class="side-panel">
-            text in here too
+            <h2>Filters</h2>
         </div>
         
     </div>
@@ -77,6 +145,104 @@
         document.querySelector(".wrapper").classList.toggle("side-panel2-open");
         });
 
+
+        document.querySelector(".side-panel3-toggle").addEventListener("click", () => {
+        document.querySelector(".wrapper").classList.toggle("side-panel3-open");
+        });
+
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            }
+        });
+        } 
+       
+//Schedule JS
+const startHour = 8;
+const endHour = 18;
+const resolution = 2;
+const currentHour = 12;
+const currentMinute = 25;
+
+
+const hourTemplate = document.querySelector(
+  '#template-hour');
+const hourGrid = document.querySelector(
+  '.calendar__hour-grid');
+for (let i = startHour; i < endHour; i++) {
+  const hourNode = hourTemplate.content
+    .firstElementChild.cloneNode(true);
+  hourGrid.appendChild(hourNode);
+
+  hourNode.querySelector('.label')
+    .innerText = `${i}`.padStart(2, '0');
+
+  if (currentHour === i) {
+    hourNode.classList.add('active');
+    hourNode.style.setProperty(
+      '--current-minute', currentMinute
+    );
+  }
+}
+
+const events = [
+  {
+    start: 8,
+    end: 10,
+    title: 'Focus Time',
+    past: true,
+  },
+  {
+    start: 10.5,
+    end: 11.5,
+    title: '1:1 with Tamika',
+    past: true,
+  },
+  {
+    start: 14,
+    end: 15,
+    title: 'Technical Weekly',
+  },
+];
+const eventTemplate = document
+  .querySelector('#template-event');
+const calendarEvents = document
+  .querySelector('.calendar__events');
+const calendar = document
+  .querySelector('.calendar');
+
+calendar.style.setProperty(
+  '--start-hour', startHour);
+calendar.style.setProperty(
+  '--end-hour', endHour);
+calendar.style.setProperty(
+  '--resolution', resolution);
+
+events.forEach((event) => {
+  const eventNode = eventTemplate.content
+    .firstElementChild.cloneNode(true);
+  calendarEvents.appendChild(eventNode);
+
+  eventNode.querySelector('.label')
+    .innerText = event.title;
+  eventNode.style.setProperty(
+    '--start', event.start);
+  eventNode.style.setProperty(
+    '--end', event.end);
+  if (event.past) {
+    eventNode.classList.add('past');
+  }
+});
+//Schedule JS End
     </script>
 </body>
 
