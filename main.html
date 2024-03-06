@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-
 
 <body>
 
@@ -20,10 +18,31 @@
 
     <div class="wrapper side-panel-open">
         <div class="side-panel2">
-            <h3>My Schedule</h3>
-
-            
-
+        <body>
+            <section class="my-day">
+                <header>
+                    <h2>
+                      Saturday, July 20th, 2024
+                    </h2>
+                </header>
+                <div class="calendar">
+                <div class="calendar__hour-grid">
+                    <template id="template-hour">
+                    <div class="calendar__hour">
+                        <p class="label"></p>
+                    </div>
+                    </template>
+                </div>
+                <div class="calendar__events">
+                    <template id="template-event">
+                    <div class="calendar__event">
+                        <p class="label"></p>
+                    </div>
+                    </template>
+                </div>
+                </div>
+            </section>
+        </body>
         </div>
         <button class="side-panel2-toggle" type="button">
             <span class="sp2-icon-open">My Schedule</span>
@@ -116,8 +135,6 @@
         </div>
         
     </div>
-
-
 
     <script>
         document.querySelector(".side-panel-toggle").addEventListener("click", () => {
@@ -230,3 +247,84 @@ events.forEach((event) => {
 </body>
 
 </html>
+
+<html>
+
+</html>
+  
+<script>
+  const startHour = 7;
+  const endHour = 24;
+  const resolution = 2;
+  const currentHour = 12;
+  const currentMinute = 25;
+  
+  const hourTemplate = document.querySelector(
+    '#template-hour');
+  const hourGrid = document.querySelector(
+    '.calendar__hour-grid');
+  for (let i = startHour; i <= endHour; i++) {
+    const hourNode = hourTemplate.content
+      .firstElementChild.cloneNode(true);
+    hourGrid.appendChild(hourNode);
+  
+    hourNode.querySelector('.label')
+      .innerText = `${i}`.padStart(2, '0');
+  
+    if (currentHour === i) {
+      hourNode.classList.add('active');
+      hourNode.style.setProperty(
+        '--current-minute', currentMinute
+      );
+    }
+  }
+  
+  const events = [
+    {
+      start: 8,
+      end: 10,
+      title: 'Dog Bowl',
+      past: true,
+    },
+    {
+      start: 10.5,
+      end: 11.5,
+      title: 'Rodeo',
+      past: true,
+    },
+    {
+      start: 14,
+      end: 15,
+      title: 'Motorcycle Show',
+    },
+  ];
+  const eventTemplate = document
+    .querySelector('#template-event');
+  const calendarEvents = document
+    .querySelector('.calendar__events');
+  const calendar = document
+    .querySelector('.calendar');
+  
+  calendar.style.setProperty(
+    '--start-hour', startHour);
+  calendar.style.setProperty(
+    '--end-hour', endHour);
+  calendar.style.setProperty(
+    '--resolution', resolution);
+  
+  events.forEach((event) => {
+    const eventNode = eventTemplate.content
+      .firstElementChild.cloneNode(true);
+    calendarEvents.appendChild(eventNode);
+  
+    eventNode.querySelector('.label')
+      .innerText = event.title;
+    eventNode.style.setProperty(
+      '--start', event.start);
+    eventNode.style.setProperty(
+      '--end', event.end);
+    if (event.past) {
+      eventNode.classList.add('past');
+    }
+  });
+</script>
