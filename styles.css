@@ -17,10 +17,13 @@ body {
 
 .side-panel-toggle {
   width: 40px;
-  height: 40px;
+  height: 100%;
   flex-shrink: 0;
   display: grid;
   place-items: center;
+
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
 
   color: #ffffff;
   background: #009578;
@@ -66,9 +69,12 @@ body {
 
 .side-panel2-toggle {
   width: 40px;
-  height: 40px;
+  height: 100%;
   display: grid;
   place-items: center;
+
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
 
   color: #ffffff;
   background: #950077;
@@ -110,6 +116,57 @@ body {
   display: initial !important;
 }
 
+
+.side-panel3-toggle {
+  width: 40px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+
+  color: #ffffff;
+  background: #1e0095;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.side-panel3-toggle:hover {
+  background: #200079;
+}
+
+.sp3-icon-close {
+  display: none !important;
+}
+
+.side-panel3 {
+  display: none;
+  width: 300px !important;
+  flex-shrink: 0;
+  flex-grow: 10;
+  padding: 20px;
+  color: #ffffff;
+  background: #250095;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
+}
+
+
+.side-panel3-open .side-panel3 {
+  display: initial;
+}
+
+.side-panel3-open .sp3-icon-open {
+  display: none !important;
+}
+
+.side-panel3-open .sp3-icon-close {
+  display: initial !important;
+}
+
+
 .title {
   display: flex;
   flex-direction: column;
@@ -119,4 +176,53 @@ body {
   margin-top: 0px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  color: black;
+}
+
+
+.activitytime {
+  background-color: #c00000;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  width: 32.4%;
+  font-size: 15px;
+}
+
+.active, .activitytime:hover {
+  background-color: #820000;
+}
+
+
+
+gmp-map {
+  height: 100%;
+  min-width: 600px;
 }
