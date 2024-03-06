@@ -21,6 +21,9 @@
         <body>
             <section class="my-day">
                 <header>
+                    <h2>
+                      Saturday, July 20th, 2024
+                    </h2>
                 </header>
                 <div class="calendar">
                 <div class="calendar__hour-grid">
@@ -94,7 +97,7 @@
     '#template-hour');
   const hourGrid = document.querySelector(
     '.calendar__hour-grid');
-  for (let i = startHour; i < endHour; i++) {
+  for (let i = startHour; i <= endHour; i++) {
     const hourNode = hourTemplate.content
       .firstElementChild.cloneNode(true);
     hourGrid.appendChild(hourNode);
