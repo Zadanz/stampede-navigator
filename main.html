@@ -127,22 +127,28 @@
         <div class="side-panel">
             <div class="search-filter">
                 <input type="text" id="searchInput" placeholder="Search...">
-                <select id="filterOptions">
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <!-- Add more filter options as needed -->
-                </select>
-                <button onclick="applyFilter()">Apply Filter</button>
+                <button onclick="performSearch()"><span class="material-icons">search</span></button>
             </div>
-            <h2>Filter DIV Elements</h2>
+            
 
             <div class="checkbox-group">
-                <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
-                <label><input type="checkbox" id="timesCheckbox"> Time</label>
-                <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
+                <div><label>Location</label></div>
+                <label><input type="checkbox" id="locationsCheckbox"> Venue A</label>
+                <label><input type="checkbox" id="locationsCheckbox"> Venue B</label>
+                <label><input type="checkbox" id="locationsCheckbox"> Venue C</label>
+                <div><label>Time</label></div>
+                <label><input type="checkbox" id="timesCheckbox"> Morning</label>
+                <label><input type="checkbox" id="timesCheckbox"> Afternoon</label>
+                <label><input type="checkbox" id="timesCheckbox"> Evening</label>
+                <div><label>Event Type</label></div>
+                
+                <label><input type="checkbox" id="eventTypesCheckbox"> Family</label>
+                <label><input type="checkbox" id="eventTypesCheckbox"> Children</label>
+                <label><input type="checkbox" id="eventTypesCheckbox"> Adults Only</label>
             </div>
 
-            <div class="container">
+            <button onclick="applyFilter()">Apply Filter</button>
+            <!-- <div class="container">
                 <div class="filterDiv locations">Venue A</div>
                 <div class="filterDiv times">Morning</div>
                 <div class="filterDiv eventTypes">Family</div>
@@ -152,7 +158,7 @@
                 <div class="filterDiv locations">Venue C</div>
                 <div class="filterDiv times">Evening</div>
                 <div class="filterDiv eventTypes">Adult only</div>
-            </div>
+            </div> -->
         </div>
 
     </div>
@@ -160,6 +166,12 @@
 </html>
 
     <script>
+        function performSearch() {
+            var searchValue = document.getElementById("searchInput").value.toLowerCase();
+            // Implement your search logic here
+            // Placeholder alert
+            alert("Performing search for: " + searchValue);
+        }
         function applyFilter() {
             var searchValue = document.getElementById("searchInput").value.toLowerCase();
             var filterOption = document.getElementById("filterOptions").value.toLowerCase();
