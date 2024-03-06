@@ -6,9 +6,21 @@ body {
   line-height: 1.5;
 }
 
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(152, 8, 0);
+  color: white;
+  margin-top: 0px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .wrapper {
   display: flex;
-  height: 100vh;
+  height: 100%;
 }
 
 .main {
@@ -17,6 +29,8 @@ body {
   overflow-y: auto;
 }
 
+
+/* filter side pannel */
 .side-panel-toggle {
   width: 40px;
   height: 100%;
@@ -27,7 +41,7 @@ body {
   text-orientation: mixed;
 
   color: #ffffff;
-  background: #009578;
+  background: #d41212;
   border: none;
   border-radius: 5px 0 0 5px;
   outline: none;
@@ -35,7 +49,7 @@ body {
 }
 
 .side-panel-toggle:hover {
-  background: #007960;
+  background: #b50f0f;
 }
 
 .sp-icon-close {
@@ -47,7 +61,7 @@ body {
   width: 270px;
   padding: 20px;
   color: #ffffff;
-  background: #009578;
+  background: #e61414;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
@@ -63,6 +77,8 @@ body {
   display: initial !important;
 }
 
+
+/* my schedule side pannel */
 .side-panel2-toggle {
   width: 40px;
   height: 100%;
@@ -73,14 +89,14 @@ body {
   text-orientation: mixed;
 
   color: #ffffff;
-  background: #950077;
+  background: #d41212;
   border: none;
   outline: none;
   cursor: pointer;
 }
 
 .side-panel2-toggle:hover {
-  background: #790077;
+  background: #b50f0f;
 }
 
 .sp2-icon-close {
@@ -93,10 +109,9 @@ body {
   min-width: 250px;
   padding: 20px;
   color: #ffffff;
-  background: #950095;
+  background: #e61414;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
 }
-
 
 .side-panel2-open .side-panel2 {
   display: initial;
@@ -110,6 +125,8 @@ body {
   display: initial !important;
 }
 
+
+/* all events side pannel */
 .side-panel3-toggle {
   width: 40px;
   height: 100%;
@@ -119,8 +136,8 @@ body {
   writing-mode: vertical-lr;
   text-orientation: mixed;
 
-  color: #ffffff;
-  background: #1e0095;
+  color: #000000;
+  background: #ffe494;
   border: none;
   border-radius: 0 5px 5px 0;
   outline: none;
@@ -128,7 +145,7 @@ body {
 }
 
 .side-panel3-toggle:hover {
-  background: #200079;
+  background: #e6cd84;
 }
 
 .sp3-icon-close {
@@ -140,8 +157,8 @@ body {
   width: 20% !important;
   padding: 20px;
   min-width: 300px;
-  color: #ffffff;
-  background: #250095;
+  color: #000000;
+  background: #ffeaaa;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
 }
 
@@ -157,16 +174,6 @@ body {
   display: initial !important;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: brown;
-  color: white;
-  margin-top: 0px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
 /* CALENDAR STYLES */
 
