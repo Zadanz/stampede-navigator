@@ -24,6 +24,7 @@ body {
 .wrapper {
   display: flex;
   height: 100%;
+  flex-grow: 1;
 }
 
 .main {
@@ -178,6 +179,7 @@ body {
 }
 
 .side-panel3 {
+  overflow: auto;
   display: none;
   width: 20% !important;
   padding: 20px;
