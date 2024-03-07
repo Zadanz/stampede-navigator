@@ -513,8 +513,28 @@ timeButtons{
   margin: auto;
 }
 
+.oldactivitytime {
+  background-color: #626262;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  width: 33%;
+  font-size: 15px;
+  font-family: "Faustina", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  outline: 2px solid black;
+  margin: auto;
+}
+
 .activitytime:hover {
   background-color: #aa1f1f;
+}
+
+.activitytimeselected {
+  background-color: #930000;
 }
 
 .active{

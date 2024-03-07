@@ -68,22 +68,22 @@
         <h3>All Events</h3>
         <button type="button" class="collapsible">Dog Bowl</button>
         <div class="content">
-          <p>little guys jumping and weaving in the saddledome</p>
+          <p>The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.</p>
         </div>
         <timeButtons>
-          <button type="button" class="activitytime">11:30am</button>
-          <button type="button" class="activitytime">2:00pm</button>
+          <button type="button" class="oldactivitytime">9:00am</button>
+          <button type="button" class="activitytime">12:30pm</button>
           <button type="button" class="activitytime">3:30pm</button>
         </timeButtons> 
         <p></p>
 
         <button type="button" class="collapsible">Motor Bikes</button>
         <div class="content">
-          <p>vroom vroom</p>
+          <p>They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.</p>
         </div> 
         <timeButtons>
-          <button type="button" class="activitytime">11:30am</button>
-          <button type="button" class="activitytime">2:00pm</button>
+          <button type="button" class="oldactivitytime">11:30am</button>
+          <button type="button" class="activitytime">1:00pm</button>
           <button type="button" class="activitytime">3:30pm</button>
         </timeButtons>
         <p></p>
@@ -93,20 +93,20 @@
           <p>woah!?! horses and carts! at the GMC stadium</p>
         </div> 
         <timeButtons>
-          <button type="button" class="activitytime">11:30am</button>
-          <button type="button" class="activitytime">2:00pm</button>
-          <button type="button" class="activitytime">3:30pm</button>
+          <button type="button" class="oldactivitytime">10:30am</button>
+          <button type="button" class="oldactivitytime">12:00pm</button>
+          <button type="button" class="activitytime">4:30pm</button>
         </timeButtons>
         <p></p>
 
-        <button type="button" class="collapsible">A band thats playing</button>
+        <button type="button" class="collapsible">T-Pain Concert</button>
         <div class="content">
           <p>This band is super cool, theyre playing at the coca cola stage</p>
         </div>
         <timeButtons>
-          <button type="button" class="activitytime">11:30am</button>
-          <button type="button" class="activitytime">2:00pm</button>
-          <button type="button" class="activitytime">3:30pm</button>
+          <button type="button" class="activitytime">2:30pm</button>
+          <button type="button" class="activitytime">5:00pm</button>
+          <button type="button" class="activitytime">9:30pm</button>
         </timeButtons> 
         <p></p>
 
@@ -810,6 +810,13 @@ function clearFilters() {
   document.querySelector(".side-panel3-toggle").addEventListener("click", () => {
   document.querySelector(".wrapper").classList.toggle("side-panel3-open");
   });
+
+  var collTime = document.getElementsByClassName("activitytime");
+  var j;
+
+  for (j = 0; j < collTime.length; j++) {
+  collTime[j].addEventListener("click", function() {this.classList.toggle("activitytimeselected"); });
+  }
 
 
   var coll = document.getElementsByClassName("collapsible");
