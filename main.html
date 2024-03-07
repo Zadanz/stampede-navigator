@@ -172,7 +172,9 @@
           <label><input type="checkbox" id="childrenCheckbox">Children</label>
           <label><input type="checkbox" id="adultCheckbox">Adult</label>
         </div>
-        <button onclick="clearFilters()">Clear Filters</button>
+        <div class = "centered-div">
+          <button class = clearButton onclick="clearFilters()">Clear Filters</button>
+        </div>
         <!-- Old filters options, for reference 
         <div class="checkbox-group">
           <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
@@ -324,13 +326,13 @@ function clearFilters() {
     {
       start: 10.5,
       end: 11.5,
-      title: 'Rodeo',
+      title: 'Chuck Wagon',
       past: true,
     },
     {
       start: 14,
       end: 15,
-      title: 'Motorcycle Show',
+      title: 'Motor Bikes',
     },
   ];
   const eventTemplate = document

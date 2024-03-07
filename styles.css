@@ -598,3 +598,27 @@ gmp-map {
 .fa-solid fa-triangle-exclamation{
   font-size: 20px;
 }
+
+.clearButton{
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+  font-size: 14px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-family: "Faustina", serif;
+  font-weight: 500;
+  margin: auto;
+  outline: #535353 solid 2px;
+}
+
+.centered-div{
+  padding-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
