@@ -511,7 +511,8 @@ gmp-map {
   position: relative;
   width: auto; /* Adjust the width as needed */
   background: var(--color-brand);
-  border-radius: var(--rad) 0 0 var(--rad);
+  border-radius: 3px;
+  /* border-radius: var(--rad) 0 0 var(--rad); */
   display: flex;
   align-items: center;
 }
@@ -532,7 +533,8 @@ gmp-map {
   flex-grow: 1;
   background: var(--color-light);
   padding: 0 1.6rem;
-  border-radius: var(--rad) 0 0 var(--rad);
+  border-radius: 3px;
+  /* border-radius: var(--rad) 0 0 var(--rad); */
   appearance: none;
   transition: all var(--dur) var(--bez);
   transition-property: width, border-radius;
@@ -541,7 +543,8 @@ gmp-map {
 }
 
 .search-form-container form input[type="search"]:not(:placeholder-shown) {
-  border-radius: var(--rad) 0 0 var(--rad);
+  border-radius: 3px;
+  /* border-radius: var(--rad) 0 0 var(--rad); */
   width: calc(100% - var(--btn-width));
 }
 
@@ -550,7 +553,8 @@ gmp-map {
   flex-shrink: 0;
   font-weight: bold;
   background: var(--color-brand);
-  border-radius: 0 var(--rad) var(--rad) 0;
+  border-radius: 3px;
+  /* border-radius: 0 var(--rad) var(--rad) 0; */
   width: var(--btn-width);
 }
 
@@ -560,7 +564,8 @@ gmp-map {
 
 /* New styles for right corners */
 .search-form-container form button {
-  border-radius: 0 var(--rad) var(--rad) 0;
+  border-radius: 3px;
+  /* border-radius: 0 var(--rad) var(--rad) 0; */
 }
 
 .search-form-container label {
