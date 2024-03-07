@@ -121,12 +121,21 @@
           <span class="material-icons sp-icon-close">keyboard_double_arrow_up</span>
       </button>
       <div class="side-panel">
-        <h3>Filter Events</h3>
+        <div class="search-form-container">
+          <form onsubmit="event.preventDefault();" role="search">
+            <label for="search">Search for stuff</label>
+            <input id="search" type="search" placeholder="Search..." autofocus required />
+            <button type="submit">Go</button>    
+          </form>
+        </div>
+        
+        
+        <!-- <h3>Filter Events</h3>
         <div class="search-filter">
             <input type="text" id="searchInput" placeholder="Search for event...">
             <button onclick="applyFilter()">Search</button>
         </div>
-        <h2>Filter for Events</h2>
+        <h2>Filter for Events</h2> -->
         <h3>Locations</h3>
         <div class="location-checkboxes">
           <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
