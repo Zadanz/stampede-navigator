@@ -577,3 +577,7 @@ gmp-map {
   width: 1px;
   overflow: hidden;
 }
+
+.fa-solid fa-triangle-exclamation{
+  font-size: 20px;
+}
