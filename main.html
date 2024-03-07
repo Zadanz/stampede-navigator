@@ -172,6 +172,7 @@
           <label><input type="checkbox" id="childrenCheckbox">Children</label>
           <label><input type="checkbox" id="adultCheckbox">Adult</label>
         </div>
+        <button onclick="clearFilters()">Clear Filters</button>
         <!-- Old filters options, for reference 
         <div class="checkbox-group">
           <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
@@ -195,6 +196,24 @@
 </html>
 
 <script>
+
+function clearFilters() {
+  // Unselect checkboxes in the location section
+  document.getElementById("venueACheckbox").checked = false;
+  document.getElementById("venueBCheckbox").checked = false;
+  document.getElementById("venueCCheckbox").checked = false;
+
+  // Unselect checkboxes in the time section
+  document.getElementById("morningCheckbox").checked = false;
+  document.getElementById("afternoonCheckbox").checked = false;
+  document.getElementById("eveningCheckbox").checked = false;
+
+  // Unselect checkboxes in the event type section
+  document.getElementById("familyCheckbox").checked = false;
+  document.getElementById("childrenCheckbox").checked = false;
+  document.getElementById("adultCheckbox").checked = false;
+}
+
 //!!!Filters JS start
   function applyFilter() {
     var searchValue = document.getElementById("searchInput").value.toLowerCase();

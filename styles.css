@@ -207,6 +207,11 @@ html {
   font-family: "Lato", sans-serif;
   font-weight: var(--fw-base);
 }
+button:hover {
+  background-color: #ddd; /* Change to your desired hover background color */
+  color: #333; /* Change to your desired hover text color */
+  cursor: pointer; /* Set the cursor to a pointer when hovering over the button */
+}
 
 :root {
   --bg-root: rgb(207, 207, 207);
