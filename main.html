@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Home</title>
-      <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <header>
-        <div class="title" style="padding: 20px;">
-            <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
-        </div>
+      <div class="title" style="padding: 20px;">
+        <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
+      </div>
     </header>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="wrapper side-panel-open">
-        <div class="side-panel2">
+      
+      <div class="side-panel2">
         <body>
-            <section class="my-day">
-                <header>
-                    <h2>
-                      Saturday, July 20th, 2024
-                    </h2>
-                </header>
-                <div class="calendar">
+          <h3>My Schedule</h3>
+          <section class="my-day">
+            <header>
+              <h2>  
+                Saturday, July 20th, 2024
+              </h2>
+            </header>
+              <div class="calendar">
                 <div class="calendar__hour-grid">
-                    <template id="template-hour">
+                  <template id="template-hour">
                     <div class="calendar__hour">
                         <p class="label"></p>
                     </div>
-                    </template>
+                  </template>
                 </div>
                 <div class="calendar__events">
                     <template id="template-event">
@@ -35,88 +37,109 @@
                     </div>
                     </template>
                 </div>
-                </div>
-            </section>
+              </div>
+          </section>
         </body>
+      </div>
+      <button class="side-panel2-toggle" type="button">
+          <span class="sp2-icon-open">My Schedule</span>
+          <span class="material-icons sp2-icon-open">keyboard_double_arrow_up</span>
+          
+          <span class="material-icons sp2-icon-close">keyboard_double_arrow_down</span>
+      </button>
+
+      <div class="side-panel3">
+        <h3>All Events</h3>
+        <button type="button" class="collapsible">Dog Bowl</button>
+        <div class="content">
+          <p>little guys jumping and weaving in the saddledome</p>
+        </div> 
+        <button type="button" class="activitytime">11:30am</button>
+        <button type="button" class="activitytime">2:00pm</button>
+        <button type="button" class="activitytime">3:30pm</button>
+        <p></p>
+
+        <button type="button" class="collapsible">Motor Bikes</button>
+        <div class="content">
+          <p>vroom vroom</p>
+        </div> 
+        <button type="button" class="activitytime">11:30am</button>
+        <button type="button" class="activitytime">2:00pm</button>
+        <button type="button" class="activitytime">3:30pm</button>
+        <p></p>
+
+        <button type="button" class="collapsible">Chuck Wagon</button>
+        <div class="content">
+          <p>woah!?! horses and carts! at the GMC stadium</p>
+        </div> 
+        <button type="button" class="activitytime">11:30am</button>
+        <button type="button" class="activitytime">2:00pm</button>
+        <button type="button" class="activitytime">3:30pm</button>
+        <p></p>
+
+        <button type="button" class="collapsible">A band thats playing</button>
+        <div class="content">
+          <p>This band is super cool, theyre playing at the coca cola stage</p>
+        </div> 
+        <button type="button" class="activitytime">11:30am</button>
+        <button type="button" class="activitytime">2:00pm</button>
+        <button type="button" class="activitytime">3:30pm</button>
+        <p></p>
+
+      </div>
+      <button class="side-panel3-toggle" type="button">
+          <span class="sp3-icon-open">All Events</span>
+          <span class="material-icons sp3-icon-open">keyboard_double_arrow_up</span>
+          
+          <span class="material-icons sp3-icon-close">keyboard_double_arrow_down</span>
+      </button>
+
+      <div class="main">
+        <head>
+          <!-- The callback parameter is required, so we use console.debug as a noop -->
+          <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDp9c_dJmtP7usaLoIjRNW1Iq8Wi0mlTxQ&callback=console.debug&libraries=maps,marker&v=beta">
+          </script>
+        </head>
+        <body>
+          <gmp-map center="51.03732681274414,-114.05403900146484" zoom="17" map-id="DEMO_MAP_ID">
+            <gmp-advanced-marker position="51.03948211669922,-114.05632781982422" title="BMO Center">
+              <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+            </gmp-advanced-marker>
+            <gmp-advanced-marker position="51.037445068359375,-114.05194091796875" title="Scotiabank Sattledome">
+              <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+            </gmp-advanced-marker>
+            <gmp-advanced-marker position="51.03622055053711,-114.05810546875" title="Big 4">
+              <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
+            </gmp-advanced-marker>
+          </gmp-map>
+        </body>
+      </div>
+      <button class="side-panel-toggle" type="button" title="Filters">
+          <span class="material-icons sp-icon-open">keyboard_double_arrow_down</span>
+          <span class="sp-icon-open">Filters</span>
+          
+          <span class="material-icons sp-icon-close">keyboard_double_arrow_up</span>
+      </button>
+      <div class="side-panel">
+        <h3>Filter Events</h3>
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Search for event...">
+            <button onclick="applyFilter()">Search</button>
         </div>
-        <button class="side-panel2-toggle" type="button">
-            <span class="sp2-icon-open">My Schedule</span>
-            <span class="material-icons sp2-icon-open">keyboard_double_arrow_up</span>
-            
-            <span class="material-icons sp2-icon-close">keyboard_double_arrow_down</span>
-        </button>
-
-        <div class="side-panel3">
-            <h3>All Events</h3>
-            <button type="button" class="collapsible">
-                    Dog Bowl      
-            </button>
-            <div class="content">
-                <p>little buys jumping and weaving in the saddledome</p>
-            </div> 
-            <button type="button" class="activitytime">11:30am</button>
-            <button type="button" class="activitytime">2:00pm</button>
-            <button type="button" class="activitytime">3:30pm</button>
-            <p></p>
-
-            <button type="button" class="collapsible">Motor Bikes
-            </button>
-            <div class="content">
-                <p>vroom vroom</p>
-            </div> 
-            <button type="button" class="activitytime">11:30am</button>
-            <button type="button" class="activitytime">2:00pm</button>
-            <button type="button" class="activitytime">3:30pm</button>
-            <p></p>
-
-            <button type="button" class="collapsible">Chuck Wagon
-            </button>
-            <div class="content">
-                <p>woah!?! horses and carts! at the GMC stadium</p>
-            </div> 
-            <button type="button" class="activitytime">11:30am</button>
-            <button type="button" class="activitytime">2:00pm</button>
-            <button type="button" class="activitytime">3:30pm</button>
-            <p></p>
-
-            <button type="button" class="collapsible">A band thats playing
-            </button>
-            <div class="content">
-                <p>This band is super cool, theyre playing at the coca cola stage</p>
-            </div> 
-            <button type="button" class="activitytime">11:30am</button>
-            <button type="button" class="activitytime">2:00pm</button>
-            <button type="button" class="activitytime">3:30pm</button>
-            <p></p>
-
+        <h2>Filter for Events</h2>
+        <h3>Locations</h3>
+        <div class="location-checkboxes">
+          <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
+          <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
+          <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
         </div>
-        <button class="side-panel3-toggle" type="button">
-            <span class="sp3-icon-open">All Events</span>
-            <span class="material-icons sp3-icon-open">keyboard_double_arrow_up</span>
-            
-            <span class="material-icons sp3-icon-close">keyboard_double_arrow_down</span>
-        </button>
-
-        <div class="main">
-            <head>
-                <!-- The callback parameter is required, so we use console.debug as a noop -->
-                <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDp9c_dJmtP7usaLoIjRNW1Iq8Wi0mlTxQ&callback=console.debug&libraries=maps,marker&v=beta">
-                </script>
-              </head>
-              <body>
-                <gmp-map center="51.03732681274414,-114.05403900146484" zoom="16" map-id="DEMO_MAP_ID">
-                    <gmp-advanced-marker position="51.03948211669922,-114.05632781982422" title="BMO Center">
-                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
-                    </gmp-advanced-marker>
-                    <gmp-advanced-marker position="51.037445068359375,-114.05194091796875" title="Scotiabank Sattledome">
-                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
-                    </gmp-advanced-marker>
-                    <gmp-advanced-marker position="51.03622055053711,-114.05810546875" title="Big 4">
-                        <img class="flag-icon" src="images/flag.png" style="width:20px;height:30px;"/>
-                    </gmp-advanced-marker>
-                  </gmp-map>
-              </body>
+        <h3>Times</h3>
+        <div class="time-checkboxes">
+          <label><input type="checkbox" id="morningCheckbox">Morning</label>
+          <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
+          <label><input type="checkbox" id="eveningCheckbox">Evening</label>
         </div>
+<<<<<<< HEAD
 
         <button class="side-panel-toggle" type="button" title="Filters">
             <span class="material-icons sp-icon-open">keyboard_double_arrow_down</span>
@@ -159,12 +182,37 @@
                 <div class="filterDiv times">Evening</div>
                 <div class="filterDiv eventTypes">Adult only</div>
             </div> -->
+=======
+        <h3>Event Type</h3>
+        <div class="eventType-checkboxes">
+          <label><input type="checkbox" id="familyCheckbox">Family</label>
+          <label><input type="checkbox" id="childrenCheckbox">Children</label>
+          <label><input type="checkbox" id="adultCheckbox">Adult</label>
+>>>>>>> origin/main
         </div>
-
+        <!-- Old filters options, for reference 
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
+          <label><input type="checkbox" id="timesCheckbox"> Time</label>
+          <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
+        </div>
+        <div class="container">
+          <div class="filterDiv locations">Venue A</div>
+          <div class="filterDiv times">Morning</div>
+          <div class="filterDiv eventTypes">Family</div>
+          <div class="filterDiv locations">Venue B</div>
+          <div class="filterDiv times">Afternoon</div>
+          <div class="filterDiv eventTypes">Children</div>
+          <div class="filterDiv locations">Venue C</div>
+          <div class="filterDiv times">Evening</div>
+          <div class="filterDiv eventTypes">Adult only</div>
+        </div> -->
+      </div>
     </div>
-</body>
+  </body>
 </html>
 
+<<<<<<< HEAD
     <script>
         function performSearch() {
             var searchValue = document.getElementById("searchInput").value.toLowerCase();
@@ -225,7 +273,53 @@
 </body>
 
 </html>
+=======
+>>>>>>> origin/main
 <script>
+//!!!Filters JS start
+  function applyFilter() {
+    var searchValue = document.getElementById("searchInput").value.toLowerCase();
+    var filterOption = document.getElementById("filterOptions").value.toLowerCase();
+
+    // Implement your filtering logic here for the side-panel
+    // For example, you can get elements by class and hide/show them based on filter criteria
+    // var elements = document.querySelectorAll('.side-panel .your-elements-selector');
+    // elements.forEach(element => {
+    //     // Implement your logic to hide/show elements based on the filter criteria
+    // });
+
+    // Placeholder alert
+    alert("Filter applied to side-panel: Search - " + searchValue + ", Filter - " + filterOption);
+  }
+
+  function filterSelection() {
+    var locationsChecked = document.getElementById("locationsCheckbox").checked;
+    var timesChecked = document.getElementById("timesCheckbox").checked;
+    var eventTypesChecked = document.getElementById("eventTypesCheckbox").checked;
+
+    var x, i;
+    x = document.querySelectorAll('.container .filterDiv');
+
+    for (i = 0; i < x.length; i++) {
+        var categories = x[i].classList;
+        var showElement =
+            (locationsChecked && categories.contains('locations')) ||
+            (timesChecked && categories.contains('times')) ||
+            (eventTypesChecked && categories.contains('eventTypes'));
+
+        x[i].style.display = showElement ? 'block' : 'none';
+    }
+  }
+
+  // Add event listeners to the checkboxes
+  //document.getElementById("locationsCheckbox").addEventListener("change", filterSelection);
+  //document.getElementById("timesCheckbox").addEventListener("change", filterSelection);
+  //document.getElementById("eventTypesCheckbox").addEventListener("change", filterSelection);
+
+  // Trigger the initial filtering
+  //filterSelection();
+
+//!!!Side panel JS start
   document.querySelector(".side-panel-toggle").addEventListener("click", () => {
   document.querySelector(".wrapper").classList.toggle("side-panel-open");
   });
@@ -245,18 +339,18 @@
 
   for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-      content.style.display = "none";
-      } else {
-      content.style.display = "block";
-      }
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+    content.style.display = "none";
+    } else {
+    content.style.display = "block";
+    }
   });
   } 
        
-//Schedule JS
-const startHour = 7;
+//!!!Schedule JS
+  const startHour = 7;
   const endHour = 24;
   const resolution = 2;
   const currentHour = 12;
@@ -302,7 +396,7 @@ const startHour = 7;
     },
   ];
   const eventTemplate = document
-    .querySelector('#template-event');
+    .querySelector('#template-event'); 
   const calendarEvents = document
     .querySelector('.calendar__events');
   const calendar = document
