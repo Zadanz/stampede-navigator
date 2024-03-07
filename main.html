@@ -123,16 +123,29 @@
       <div class="side-panel">
         <h3>Filter Events</h3>
         <div class="search-filter">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <select id="filterOptions">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <!-- Add more filter options as needed -->
-            </select>
-            <button onclick="applyFilter()">Apply Filter</button>
+            <input type="text" id="searchInput" placeholder="Search for event...">
+            <button onclick="applyFilter()">Search</button>
         </div>
-        <h2>Filter DIV Elements</h2>
-
+        <h2>Filter for Events</h2>
+        <h3>Locations</h3>
+        <div class="location-checkboxes">
+          <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
+          <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
+          <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
+        </div>
+        <h3>Times</h3>
+        <div class="time-checkboxes">
+          <label><input type="checkbox" id="morningCheckbox">Morning</label>
+          <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
+          <label><input type="checkbox" id="eveningCheckbox">Evening</label>
+        </div>
+        <h3>Event Type</h3>
+        <div class="eventType-checkboxes">
+          <label><input type="checkbox" id="familyCheckbox">Family</label>
+          <label><input type="checkbox" id="childrenCheckbox">Children</label>
+          <label><input type="checkbox" id="adultCheckbox">Adult</label>
+        </div>
+        <!-- Old filters options, for reference 
         <div class="checkbox-group">
           <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
           <label><input type="checkbox" id="timesCheckbox"> Time</label>
@@ -148,7 +161,7 @@
           <div class="filterDiv locations">Venue C</div>
           <div class="filterDiv times">Evening</div>
           <div class="filterDiv eventTypes">Adult only</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </body>
@@ -191,12 +204,12 @@
   }
 
   // Add event listeners to the checkboxes
-  document.getElementById("locationsCheckbox").addEventListener("change", filterSelection);
-  document.getElementById("timesCheckbox").addEventListener("change", filterSelection);
-  document.getElementById("eventTypesCheckbox").addEventListener("change", filterSelection);
+  //document.getElementById("locationsCheckbox").addEventListener("change", filterSelection);
+  //document.getElementById("timesCheckbox").addEventListener("change", filterSelection);
+  //document.getElementById("eventTypesCheckbox").addEventListener("change", filterSelection);
 
   // Trigger the initial filtering
-  filterSelection();
+  //filterSelection();
 
 //!!!Side panel JS start
   document.querySelector(".side-panel-toggle").addEventListener("click", () => {
