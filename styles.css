@@ -490,3 +490,85 @@ gmp-map {
   height: 100%;
   min-width: 600px;
 }
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --color-brand: #57bd84;
+  --font-fam: 'Lato', sans-serif;
+  --height: 3rem; /* Adjust the height as needed */
+  --btn-width: 4rem; /* Adjust the width as needed */
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+.search-form-container {
+  margin-left: 10px; /* Add the desired margin value */
+  overflow: hidden; /* This can help prevent the unwanted white margin during scrolling */
+}
+
+.search-form-container form {
+  position: relative;
+  width: auto; /* Adjust the width as needed */
+  background: var(--color-brand);
+  border-radius: var(--rad) 0 0 var(--rad);
+  display: flex;
+  align-items: center;
+}
+
+
+.search-form-container input,
+.search-form-container button {
+  height: var(--height);
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.search-form-container input[type="search"] {
+  outline: 0;
+  flex-grow: 1;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad) 0 0 var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  position: relative;
+  margin-right: 10px; /* Add the desired margin value */
+}
+
+.search-form-container form input[type="search"]:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
+}
+
+.search-form-container button {
+  display: none;
+  flex-shrink: 0;
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
+  width: var(--btn-width);
+}
+
+.search-form-container form input[type="search"]:not(:placeholder-shown) + button {
+  display: block;
+}
+
+/* New styles for right corners */
+.search-form-container form button {
+  border-radius: 0 var(--rad) var(--rad) 0;
+}
+
+.search-form-container label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
