@@ -346,7 +346,7 @@ section {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 100%;
+  font-size: 1.5vh;
   color: #000000;
 }
 
@@ -357,6 +357,10 @@ section {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.calendar__hour.current > .label{
+  color: var(--hi-primary);
 }
 
 .calendar__hour.current::before {
@@ -377,7 +381,7 @@ section {
 
 .calendar__events {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto;
   grid-template-rows: repeat(var(--rows), 1fr);
 
   left: calc(2 * var(--left-margin));
@@ -408,6 +412,7 @@ section {
   background: var(--bg-hi);
   margin: 0;
   box-sizing: border-box;
+  outline: 2px solid black;
 }
 
 .calendar__event > .label {
@@ -416,6 +421,7 @@ section {
   margin: 0;
   box-sizing: border-box;
   text-align: center;
+  font-size: 0.8vw;
 }
 
 .calendar__event.past {
