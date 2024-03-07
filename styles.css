@@ -31,6 +31,15 @@ body {
   overflow-y: auto;
 }
 
+.custom-header {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-button {
+  margin: 0;
+}
+
 
 /* filter side pannel */
 .side-panel-toggle {
