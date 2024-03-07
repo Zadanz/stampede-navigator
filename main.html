@@ -3,6 +3,16 @@
   <head>
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <!-- Holtwood One SC Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <!-- Faustina Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <header>
@@ -53,37 +63,45 @@
         <button type="button" class="collapsible">Dog Bowl</button>
         <div class="content">
           <p>little guys jumping and weaving in the saddledome</p>
-        </div> 
-        <button type="button" class="activitytime">11:30am</button>
-        <button type="button" class="activitytime">2:00pm</button>
-        <button type="button" class="activitytime">3:30pm</button>
+        </div>
+        <timeButtons>
+          <button type="button" class="activitytime">11:30am</button>
+          <button type="button" class="activitytime">2:00pm</button>
+          <button type="button" class="activitytime">3:30pm</button>
+        </timeButtons> 
         <p></p>
 
         <button type="button" class="collapsible">Motor Bikes</button>
         <div class="content">
           <p>vroom vroom</p>
         </div> 
-        <button type="button" class="activitytime">11:30am</button>
-        <button type="button" class="activitytime">2:00pm</button>
-        <button type="button" class="activitytime">3:30pm</button>
+        <timeButtons>
+          <button type="button" class="activitytime">11:30am</button>
+          <button type="button" class="activitytime">2:00pm</button>
+          <button type="button" class="activitytime">3:30pm</button>
+        </timeButtons>
         <p></p>
 
         <button type="button" class="collapsible">Chuck Wagon</button>
         <div class="content">
           <p>woah!?! horses and carts! at the GMC stadium</p>
         </div> 
-        <button type="button" class="activitytime">11:30am</button>
-        <button type="button" class="activitytime">2:00pm</button>
-        <button type="button" class="activitytime">3:30pm</button>
+        <timeButtons>
+          <button type="button" class="activitytime">11:30am</button>
+          <button type="button" class="activitytime">2:00pm</button>
+          <button type="button" class="activitytime">3:30pm</button>
+        </timeButtons>
         <p></p>
 
         <button type="button" class="collapsible">A band thats playing</button>
         <div class="content">
           <p>This band is super cool, theyre playing at the coca cola stage</p>
-        </div> 
-        <button type="button" class="activitytime">11:30am</button>
-        <button type="button" class="activitytime">2:00pm</button>
-        <button type="button" class="activitytime">3:30pm</button>
+        </div>
+        <timeButtons>
+          <button type="button" class="activitytime">11:30am</button>
+          <button type="button" class="activitytime">2:00pm</button>
+          <button type="button" class="activitytime">3:30pm</button>
+        </timeButtons> 
         <p></p>
 
       </div>
@@ -126,7 +144,6 @@
             <input type="text" id="searchInput" placeholder="Search for event...">
             <button onclick="applyFilter()">Search</button>
         </div>
-        <h2>Filter for Events</h2>
         <h3>Locations</h3>
         <div class="location-checkboxes">
           <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
