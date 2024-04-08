@@ -65,51 +65,109 @@
       </button>
 
       <div class="side-panel3">
-        <h3>All Events</h3>
-        <button type="button" class="collapsible">Dog Bowl</button>
-        <div class="content">
-          <p>The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.</p>
+        <div class="events-panel">
+          <h3>All Events</h3>
+          <button type="button" class="collapsible">Dog Bowl</button>
+          <div class="content">
+            <p>The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.</p>
+          </div>
+          <timeButtons>
+            <button type="button" class="oldactivitytime">9:00am</button>
+            <button type="button" class="activitytime">12:30pm</button>
+            <button type="button" class="activitytime">3:30pm</button>
+          </timeButtons> 
+          <p></p>
+
+          <button type="button" class="collapsible">Motor Bikes</button>
+          <div class="content">
+            <p>They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.</p>
+          </div> 
+          <timeButtons>
+            <button type="button" class="oldactivitytime">11:30am</button>
+            <button type="button" class="activitytime">1:00pm</button>
+            <button type="button" class="activitytime">3:30pm</button>
+          </timeButtons>
+          <p></p>
+
+          <button type="button" class="collapsible">Chuck Wagon</button>
+          <div class="content">
+            <p>woah!?! horses and carts! at the GMC stadium</p>
+          </div> 
+          <timeButtons>
+            <button type="button" class="oldactivitytime">10:30am</button>
+            <button type="button" class="oldactivitytime">12:00pm</button>
+            <button type="button" class="activitytime">4:30pm</button>
+          </timeButtons>
+          <p></p>
+
+          <button type="button" class="collapsible">T-Pain Concert</button>
+          <div class="content">
+            <p>This band is super cool, theyre playing at the coca cola stage</p>
+          </div>
+          <timeButtons>
+            <button type="button" class="activitytime">2:30pm</button>
+            <button type="button" class="activitytime">5:00pm</button>
+            <button type="button" class="activitytime">9:30pm</button>
+          </timeButtons> 
+          <p></p>
+      </div>
+      <div class="filter-panel">
+        <div class="search-form-container">
+          <form onsubmit="event.preventDefault();" role="search">
+            <label for="search">Search for stuff</label>
+            <input id="search" type="search" placeholder="Search..." autofocus required />
+            <button type="submit">Go</button>    
+          </form>
         </div>
-        <timeButtons>
-          <button type="button" class="oldactivitytime">9:00am</button>
-          <button type="button" class="activitytime">12:30pm</button>
-          <button type="button" class="activitytime">3:30pm</button>
-        </timeButtons> 
-        <p></p>
-
-        <button type="button" class="collapsible">Motor Bikes</button>
-        <div class="content">
-          <p>They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.</p>
-        </div> 
-        <timeButtons>
-          <button type="button" class="oldactivitytime">11:30am</button>
-          <button type="button" class="activitytime">1:00pm</button>
-          <button type="button" class="activitytime">3:30pm</button>
-        </timeButtons>
-        <p></p>
-
-        <button type="button" class="collapsible">Chuck Wagon</button>
-        <div class="content">
-          <p>woah!?! horses and carts! at the GMC stadium</p>
-        </div> 
-        <timeButtons>
-          <button type="button" class="oldactivitytime">10:30am</button>
-          <button type="button" class="oldactivitytime">12:00pm</button>
-          <button type="button" class="activitytime">4:30pm</button>
-        </timeButtons>
-        <p></p>
-
-        <button type="button" class="collapsible">T-Pain Concert</button>
-        <div class="content">
-          <p>This band is super cool, theyre playing at the coca cola stage</p>
+        
+        
+        <!-- <h3>Filter Events</h3>
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Search for event...">
+            <button onclick="applyFilter()">Search</button>
         </div>
-        <timeButtons>
-          <button type="button" class="activitytime">2:30pm</button>
-          <button type="button" class="activitytime">5:00pm</button>
-          <button type="button" class="activitytime">9:30pm</button>
-        </timeButtons> 
-        <p></p>
+        <h2>Filter for Events</h2> -->
+        
 
+        <h3>Locations</h3>
+        <div class="location-checkboxes">
+          <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
+          <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
+          <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
+        </div>
+        <h3>Times</h3>
+        <div class="time-checkboxes">
+          <label><input type="checkbox" id="morningCheckbox">Morning</label>
+          <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
+          <label><input type="checkbox" id="eveningCheckbox">Evening</label>
+        </div>
+        <h3>Event Type</h3>
+        <div class="eventType-checkboxes">
+          <label><input type="checkbox" id="familyCheckbox">Family</label>
+          <label><input type="checkbox" id="childrenCheckbox">Children</label>
+          <label><input type="checkbox" id="adultCheckbox">Adult</label>
+        </div>
+        <div class = "centered-div">
+          <button class = clearButton onclick="clearFilters()">Clear Filters</button>
+        </div>
+        <!-- Old filters options, for reference 
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
+          <label><input type="checkbox" id="timesCheckbox"> Time</label>
+          <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
+        </div>
+        <div class="container">
+          <div class="filterDiv locations">Venue A</div>
+          <div class="filterDiv times">Morning</div>
+          <div class="filterDiv eventTypes">Family</div>
+          <div class="filterDiv locations">Venue B</div>
+          <div class="filterDiv times">Afternoon</div>
+          <div class="filterDiv eventTypes">Children</div>
+          <div class="filterDiv locations">Venue C</div>
+          <div class="filterDiv times">Evening</div>
+          <div class="filterDiv eventTypes">Adult only</div>
+        </div> -->
+      </div>
       </div>
       <button class="side-panel3-toggle" type="button">
           <span class="sp3-icon-open">All Events</span>
