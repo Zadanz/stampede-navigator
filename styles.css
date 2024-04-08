@@ -486,6 +486,9 @@ section {
   font-style: normal;
   border: #000000;
   border-radius: 3px;
+  display:inline-block;
+  white-space: wrap;
+  clear:left;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -503,12 +506,10 @@ section {
   position: relative;
 }
 .time-content {
-  padding: 0 18px;
   display: none;
-  overflow: auto;
+  overflow: hidden;
   background-color: #f1f1f1;
   color: black;
-  position: relative;
 }
 
 
@@ -536,7 +537,6 @@ timeButtons{
   cursor: pointer;
   padding: 10px;
   text-align: center;
-  width: 33%;
   font-size: 15px;
   font-family: "Faustina", serif;
   font-optical-sizing: auto;
@@ -552,7 +552,6 @@ timeButtons{
   cursor: pointer;
   padding: 10px;
   text-align: center;
-  width: 33%;
   font-size: 15px;
   font-family: "Faustina", serif;
   font-optical-sizing: auto;
