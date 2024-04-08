@@ -892,6 +892,18 @@ function clearFilters() {
   });
   } 
        
+//!!!Events JS
+  const availEvents = [
+    {
+      title: 'Dog Bowl',
+      description: 'The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.',
+      availableTimes: [{day: 20, hour: 900}, {day: 20, hour: 1230}, {day: 20, hour: 1530}],
+      location: 'Stampede Grounds',
+      type: 'Family',
+    },
+  ];
+
+
 //!!!Schedule JS
   const startHour = 7;
   const endHour = 24;
@@ -936,6 +948,7 @@ function clearFilters() {
       start: 14,
       end: 15,
       title: 'Motor Bikes',
+      past:false,
     },
   ];
   const eventTemplate = document
