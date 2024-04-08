@@ -497,10 +497,33 @@ section {
 .content {
   padding: 0 18px;
   display: none;
+  overflow: auto;
+  background-color: #f1f1f1;
+  color: black;
+  position: relative;
+}
+.time-content {
+  padding: 0 18px;
+  display: none;
+  overflow: auto;
+  background-color: #f1f1f1;
+  color: black;
+  position: relative;
+}
+
+
+/* Style the collapsible content. Note: hidden by default */
+/* .time-content {
+  padding: 0 30px;
+  text-align: center;
+  display: none;
   overflow: hidden;
   background-color: #f1f1f1;
   color: black;
-}
+  position: absolute; 
+  top: 55px;
+  right: 70px;
+} */
 
 timeButtons{
   display: flex;

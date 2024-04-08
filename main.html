@@ -72,9 +72,18 @@
             <p>The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.</p>
           </div>
           <timeButtons>
-            <button type="button" class="oldactivitytime">9:00am</button>
-            <button type="button" class="activitytime">12:30pm</button>
-            <button type="button" class="activitytime">3:30pm</button>
+            <button type="button" class="oldactivitytime collapsible">9:00am</button>
+            <div class="time-content">
+              <p>booooooooooooooooooooooooooooooooooooooooooop</p>
+            </div>
+            <button type="button" class="activitytime collapsible">12:30pm</button>
+            <div class="time-content">
+              <p>boop</p>
+            </div>
+            <button type="button" class="activitytime collapsible">3:30pm</button>
+            <div class="time-content">
+              <p>boop</p>
+            </div>
           </timeButtons> 
           <p></p>
 
@@ -869,13 +878,22 @@ function clearFilters() {
   document.querySelector(".wrapper").classList.toggle("side-panel3-open");
   });
 
-  var collTime = document.getElementsByClassName("activitytime");
-  var j;
+  var collTime = document.getElementsByClassName("timeButtons");
+  for (var j = 0; j < collTime.length; j++){
+    collTime[j].addEventListener("click", function(){
 
-  for (j = 0; j < collTime.length; j++) {
-  collTime[j].addEventListener("click", function() {this.classList.toggle("activitytimeselected"); });
+      this.classList.toggle("activitytimeselected");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+            
+        }
+    });
   }
 
+  
 
   var coll = document.getElementsByClassName("collapsible");
   var i;
