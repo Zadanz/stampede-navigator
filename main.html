@@ -812,31 +812,7 @@
 
 <script>
 
-  // JavaScript for dynamic date navigation
-  const currentDateDisplay = document.getElementById('currentDateDisplay');
 
-// Function to display the current date in the <h4> element
-function displayDate(date) {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    currentDateDisplay.textContent = date.toLocaleDateString('en-US', options);
-}
-
-// Function to navigate to the previous day
-function previousDay() {
-    currentDate.setDate(currentDate.getDate() - 1);
-    displayDate(currentDate);
-}
-
-// Function to navigate to the next day
-function nextDay() {
-    currentDate.setDate(currentDate.getDate() + 1);
-    displayDate(currentDate);
-}
-
-// Set the initial date to July 5, 2024
-const initialDate = new Date('July 5, 2024');
-const currentDate = new Date(initialDate);
-displayDate(currentDate);
 
 function clearFilters() {
   // Unselect checkboxes in the location section
@@ -954,6 +930,40 @@ function clearFilters() {
   ];
 
 
+
+  // JavaScript for dynamic date navigation
+  const currentDateDisplay = document.getElementById('currentDateDisplay');
+
+// Function to display the current date in the <h4> element
+function displayDate(date) {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    currentDateDisplay.textContent = date.toLocaleDateString('en-US', options);
+}
+
+// Function to navigate to the previous day
+function previousDay() {
+    clearSchedule();
+    currentDate.setDate(currentDate.getDate() - 1);
+    displayDate(currentDate);
+}
+
+// Function to navigate to the next day
+function nextDay() {
+    clearSchedule();
+    currentDate.setDate(currentDate.getDate() + 1);
+    displayDate(currentDate);
+}
+
+function clearSchedule() {
+    const calendarEvents = document.querySelector('.calendar__events');
+    calendarEvents.innerHTML = ''; // Remove all child elements (events)
+}
+
+// Set the initial date to July 5, 2024
+const initialDate = new Date('July 5, 2024');
+const currentDate = new Date(initialDate);
+displayDate(currentDate);
+
 //!!!Schedule JS
   const startHour = 7;
   const endHour = 24;
@@ -1030,5 +1040,25 @@ function clearFilters() {
       eventNode.classList.add('past');
     }
   });
+
+  function displayEventsForCurrentDate() {
+    clearSchedule(); // Clear existing events before displaying new ones
+
+    events.forEach((event) => {
+        const eventNode = eventTemplate.content.firstElementChild.cloneNode(true);
+        calendarEvents.appendChild(eventNode);
+
+        eventNode.querySelector('.label').innerText = event.title;
+        eventNode.style.setProperty('--start', event.start);
+        eventNode.style.setProperty('--end', event.end);
+
+        if (event.past) {
+            eventNode.classList.add('past');
+        }
+    });
+}
+
+// Call this function initially and whenever the date changes
+displayEventsForCurrentDate();
 //Schedule JS End
 </script>
