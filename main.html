@@ -833,8 +833,9 @@ function nextDay() {
     displayDate(currentDate);
 }
 
-// Initialize with the current date
-const currentDate = new Date();
+// Set the initial date to July 5, 2024
+const initialDate = new Date('July 5, 2024');
+const currentDate = new Date(initialDate);
 displayDate(currentDate);
 
 function clearFilters() {
