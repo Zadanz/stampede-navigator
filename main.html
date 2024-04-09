@@ -2,6 +2,10 @@
 <html>
   <head>
     <title>Home</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Calendar</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
     <!-- Holtwood One SC Font-->
@@ -31,9 +35,7 @@
           <section class="my-day">
             <header class="custom-header">
               <button class="arrow-button" onclick="previousDay()">&lt;&lt;</button>
-              <h4>  
-                Saturday, July 20th, 2024
-              </h4>
+              <h4 id="currentDateDisplay"></h4>
               <button class="arrow-button" onclick="nextDay()">&gt;&gt;</button>
             </header>
               <div class="calendar">
@@ -809,6 +811,31 @@
 </html>
 
 <script>
+
+  // JavaScript for dynamic date navigation
+  const currentDateDisplay = document.getElementById('currentDateDisplay');
+
+// Function to display the current date in the <h4> element
+function displayDate(date) {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    currentDateDisplay.textContent = date.toLocaleDateString('en-US', options);
+}
+
+// Function to navigate to the previous day
+function previousDay() {
+    currentDate.setDate(currentDate.getDate() - 1);
+    displayDate(currentDate);
+}
+
+// Function to navigate to the next day
+function nextDay() {
+    currentDate.setDate(currentDate.getDate() + 1);
+    displayDate(currentDate);
+}
+
+// Initialize with the current date
+const currentDate = new Date();
+displayDate(currentDate);
 
 function clearFilters() {
   // Unselect checkboxes in the location section
