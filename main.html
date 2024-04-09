@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete Search</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
     <!-- Holtwood One SC Font-->
@@ -131,11 +133,12 @@
       <div class="filter-panel">
         <div class="search-form-container">
           <form onsubmit="event.preventDefault();" role="search">
-            <label for="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Search..." autofocus required />
-            <button type="submit">Go</button>    
+              <label for="search">Search for stuff</label>
+              <input id="searchInput" type="search" placeholder="Search..." autofocus required />
+              <div class="autocomplete-results" id="autocompleteResults"></div>
+              <button type="submit">Go</button>
           </form>
-        </div>
+      </div>
         
         
         <!-- <h3>Filter Events</h3>
@@ -1061,4 +1064,64 @@ displayDate(currentDate);
 // Call this function initially and whenever the date changes
 displayEventsForCurrentDate();
 //Schedule JS End
+
+const suggestions = [
+  "Dog Bowl", 
+  "Motor Bikes",
+  "Chuck Wagon",
+  "T-Pain Concert"
+];
+
+const searchInput = document.getElementById('searchInput');
+const autocompleteResults = document.getElementById('autocompleteResults');
+
+// Function to filter and display autocomplete suggestions
+function displayAutocompleteResults() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredSuggestions = suggestions.filter(suggestion =>
+        suggestion.toLowerCase().startsWith(searchTerm)
+    );
+
+    // Clear previous results
+    autocompleteResults.innerHTML = '';
+
+    // Display filtered suggestions
+    filteredSuggestions.forEach(suggestion => {
+        const autocompleteItem = document.createElement('div');
+        autocompleteItem.textContent = suggestion;
+        autocompleteItem.classList.add('autocomplete-item');
+
+        autocompleteItem.addEventListener('click', () => {
+            searchInput.value = suggestion;
+            autocompleteResults.innerHTML = '';
+        });
+
+        autocompleteResults.appendChild(autocompleteItem);
+    });
+
+    // Show/hide autocomplete results container
+    if (filteredSuggestions.length > 0) {
+        autocompleteResults.style.display = 'block';
+    } else {
+        autocompleteResults.style.display = 'none';
+    }
+}
+
+// Event listener for input changes
+searchInput.addEventListener('input', displayAutocompleteResults);
+
+// Event listener to hide autocomplete results on outside click
+document.addEventListener('click', event => {
+    if (!autocompleteResults.contains(event.target) && event.target !== searchInput) {
+        autocompleteResults.innerHTML = '';
+    }
+});
+
+// Prevent form submission (optional)
+const form = document.querySelector('form');
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    // Perform search or other action here
+});
+
 </script>

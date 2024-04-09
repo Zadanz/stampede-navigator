@@ -597,14 +597,13 @@ gmp-map {
 .search-form-container {
   margin-left: 10px; /* Add the desired margin value */
   overflow: hidden; /* This can help prevent the unwanted white margin during scrolling */
+  position: relative; /* Make the container relative for positioning */
 }
 
 .search-form-container form {
-  position: relative;
   width: auto; /* Adjust the width as needed */
   background: var(--color-brand);
   border-radius: 3px;
-  /* border-radius: var(--rad) 0 0 var(--rad); */
   display: flex;
   align-items: center;
 }
@@ -621,17 +620,19 @@ gmp-map {
 }
 
 .search-form-container input[type="search"] {
-  outline: 0;
-  flex-grow: 1;
+  height: var(--height);
+  font-family: var(--font-fam);
+  font-size: 1.8rem;
   background: var(--color-light);
   padding: 0 1.6rem;
   border-radius: 3px;
-  /* border-radius: var(--rad) 0 0 var(--rad); */
-  appearance: none;
+  flex-grow: 1;
+  outline: 0;
   transition: all var(--dur) var(--bez);
-  transition-property: width, border-radius;
-  position: relative;
-  margin-right: 10px; /* Add the desired margin value */
+}
+
+.search-form-container input[type="search"]:focus {
+  width: calc(100% - var(--btn-width));
 }
 
 .search-form-container form input[type="search"]:not(:placeholder-shown) {
@@ -641,13 +642,27 @@ gmp-map {
 }
 
 .search-form-container button {
-  display: none;
-  flex-shrink: 0;
+  height: var(--height);
   font-weight: bold;
   background: var(--color-brand);
   border-radius: 3px;
-  /* border-radius: 0 var(--rad) var(--rad) 0; */
+  flex-shrink: 0;
   width: var(--btn-width);
+}
+
+.search-suggestions {
+  position: absolute;
+  width: 100%; /* Adjust this to match the input width */
+  background: white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  z-index: 100;
+  top: calc(100% + 5px); /* Position below the input */
+  left: 0;
+  display: none; /* Initially hide the suggestions */
+}
+
+.search-form-container input[type="search"]:focus + .search-suggestions {
+  display: block; /* Show suggestions on input focus */
 }
 
 .search-form-container form input[type="search"]:not(:placeholder-shown) + button {
