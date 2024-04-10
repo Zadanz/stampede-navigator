@@ -192,7 +192,7 @@ body {
   margin-top:100px;
   overflow: auto;
   display: none;
-  width: 25% !important;
+  width: 30% !important;
   padding: 20px;
   min-width: 500px;
   color: #000000;
@@ -478,9 +478,9 @@ section {
 .events-panel, .filter-panel{
   display:inline-block;
   white-space: wrap;
-  width: 50%;
+  width: 47%;
   vertical-align: top;
-  margin: 10px;
+  margin: 8px;
 }
 
 .timeButton{
@@ -607,10 +607,11 @@ timeButtons{
 
 .activitytime:hover {
   background-color: #aa1f1f;
+  color: rgb(255, 255, 255);
 }
 
 .activitytimeselected {
-  background-color: #930000;
+  background-color: #8b0101;
 }
 
 .active{
@@ -620,6 +621,7 @@ timeButtons{
 
 .active:hover{
   background-color: #6e1414;
+  color: #ffffff;
 }
 
 gmp-map {
@@ -638,16 +640,18 @@ gmp-map {
   --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
 
+/*
 .search-form-container {
-  position: relative; /* Ensure relative positioning for absolute children */
+  position: relative; // Ensure relative positioning for absolute children 
 }
 .search-form-container form {
-  width: auto; /* Adjust the width as needed */
+  width: auto; // Adjust the width as needed 
   background: var(--color-brand);
   border-radius: 3px;
   display: flex;
   align-items: center;
 }
+*/
 
 .search-input-container {
   position: relative; /* Container for search input and autocomplete results */
@@ -670,29 +674,29 @@ gmp-map {
   background: var(--color-light);
   padding: 0 1.6rem;
   border-radius: 3px;
-  flex-grow: 1;
   outline: 0;
   transition: all var(--dur) var(--bez);
+  width: 90%;
 }
 
-.search-form-container input[type="search"]:focus {
+/*.search-form-container input[type="search"]:focus {
   width: calc(100% - var(--btn-width));
-}
+}*/
 
-.search-form-container form input[type="search"]:not(:placeholder-shown) {
+/*.search-form-container form input[type="search"]:not(:placeholder-shown) {
   border-radius: 3px;
-  /* border-radius: var(--rad) 0 0 var(--rad); */
+   border-radius: var(--rad) 0 0 var(--rad); 
   width: calc(100% - var(--btn-width));
-}
+}*/
 
-.search-form-container button {
+/*.search-form-container button {
   height: var(--height);
   font-weight: bold;
   background: var(--color-brand);
   border-radius: 3px;
   flex-shrink: 0;
   width: var(--btn-width);
-}
+}*/
 
 .search-form-container input[type="search"]:focus + .search-suggestions {
   display: block; /* Show suggestions on input focus */
@@ -704,7 +708,7 @@ gmp-map {
 
 .search-suggestions {
   position: absolute;
-  width: 100%; /* Adjust this to match the input width */
+  width: 90%; /* Adjust this to match the input width */
   background: white;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   z-index: 100;
@@ -717,7 +721,7 @@ gmp-map {
   position: absolute;
   top: 100%; /* Position below the search input */
   left: 0;
-  width: 100%;
+  width: 90%;
   background: white;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   z-index: 100;

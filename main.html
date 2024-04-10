@@ -72,7 +72,7 @@
 
           <div class="list-events">
             <template id="template-list-event">
-              <div id = "list-event">
+              <div id = "list-event" class="event">
                 <button type="button" class="collapsible" id="titleButton" style="font-size: 25px;">Template Title </button>
                 <div class="content">
                   <p id="templateDescription">Template Description</p>
@@ -160,10 +160,10 @@
           <form onsubmit="event.preventDefault();" role="search">
             <label for="search">Search for stuff</label>
             <div class="search-input-container">
-              <input id="searchInput" type="search" placeholder="Search..." autofocus required />
+              <input id="searchInput" type="search" onkeyup="searchName()" placeholder="Search..." autofocus required />
               <div class="autocomplete-results" id="autocompleteResults"></div>
             </div>
-            <button type="submit">Go</button>   
+            <!-- <button type="submit">Go</button> -->   
           </form>
         </div>
         
@@ -177,23 +177,24 @@
 
         <h3>Locations</h3>
         <div class="location-checkboxes checkboxes">
-          <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
-          <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
-          <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
-          <label><input type="checkbox" id="venueDCheckbox">GMC Stadium</label>
-          <label><input type="checkbox" id="venueECheckbox">Nutrien Western Event Center</label>
+          <label><input type="checkbox" id="venueACheckbox" onchange="change()" filter="Saddledome">Saddledome</label>
+          <label><input type="checkbox" id="venueBCheckbox" onchange="change()" filter="BMO Centre">BMO Centre</label>
+          <label><input type="checkbox" id="venueCCheckbox" onchange="change()" filter="Big Four Building">Big Four Building</label>
+          <label><input type="checkbox" id="venueDCheckbox" onchange="change()" filter="GMC Stadium">GMC Stadium</label>
+          <label><input type="checkbox" id="venueECheckbox" onchange="change()" filter="Nutrien Western Event Center">Nutrien Western Event Center</label>
+          <label><input type="checkbox" id="venueFCheckbox" onchange="change()" filter="Coca-Cola Stage">Coca-Cola Stage</label>
         </div>
         <h3>Times</h3>
         <div class="time-checkboxes checkboxes">
-          <label><input type="checkbox" id="morningCheckbox">Morning</label>
-          <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
-          <label><input type="checkbox" id="eveningCheckbox">Evening</label>
+          <label><input type="checkbox" id="morningCheckbox" onchange="change()" filter="Morning">Morning (7:00 AM - 12:00 PM)</label>
+          <label><input type="checkbox" id="afternoonCheckbox" onchange="change()" filter="Afternoon">Afternoon (12:00 PM - 5:00 PM)</label>
+          <label><input type="checkbox" id="eveningCheckbox" onchange="change()" filter="Evening">Evening (5:00 PM - 12:00 AM)</label>
         </div>
         <h3>Event Type</h3>
         <div class="eventType-checkboxes checkboxes">
-          <label><input type="checkbox" id="familyCheckbox">Family</label>
-          <label><input type="checkbox" id="childrenCheckbox">Children</label>
-          <label><input type="checkbox" id="adultCheckbox">Adult</label>
+          <label><input type="checkbox" id="familyCheckbox" onchange="change()" filter="Family">Family</label>
+          <label><input type="checkbox" id="childrenCheckbox" onchange="change()" filter="Children">Children</label>
+          <label><input type="checkbox" id="adultCheckbox" onchange="change()" filter="Adult">Adult</label>
         </div>
         <div class = "centered-div">
           <button class = clearButton onclick="clearFilters()">Clear Filters</button>
@@ -896,9 +897,156 @@ function clearFilters() {
   document.getElementById("familyCheckbox").checked = false;
   document.getElementById("childrenCheckbox").checked = false;
   document.getElementById("adultCheckbox").checked = false;
+
+  var rElems = document.querySelectorAll(".list-events div.event");
+  for (var i = 0; i < rElems.length; i++) {
+    rElems[i].style.display = "block";
+  }
+
 }
 
+//!!!Search by name start
+function searchName() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('searchInput');
+  filter = input.value.toUpperCase();
+  var rElems = document.querySelectorAll(".list-events div.event");
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < rElems.length; i++) {
+    var el = rElems[i];
+    txtValue = availEvents[parseInt(el.id.substring(6,el.id.length))].title || availEvents[parseInt(el.id.substring(6,el.id.length))].title;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      el.style.display = "";
+    } else {
+      el.style.display = "none";
+    }
+  }
+}
+
+
 //!!!Filters JS start
+function change(){
+  var venueFilters = document.querySelectorAll(".location-checkboxes input[type='checkbox']");
+  var timeFilters = document.querySelectorAll(".time-checkboxes input[type='checkbox']");
+  var typeFilters = document.querySelectorAll(".eventType-checkboxes input[type='checkbox']");
+  var filters = {
+    venues: getClassOfCheckedCheckboxes(venueFilters),
+    times: getClassOfCheckedCheckboxes(timeFilters),
+    types: getClassOfCheckedCheckboxes(typeFilters)
+  }
+  console.log(filters);
+  filterResults(filters);
+  }
+
+  function getClassOfCheckedCheckboxes(checkboxes) {
+  var classes = [];
+
+  if (checkboxes && checkboxes.length > 0) {
+    for (var i = 0; i < checkboxes.length; i++) {
+      var cb = checkboxes[i];
+
+      if (cb.checked) {
+        classes.push(cb.getAttribute("filter"));
+      }
+    }
+  }
+
+  return classes;
+}
+
+function filterResults(filters) {
+  var rElems = document.querySelectorAll(".list-events div.event");
+  var hiddenElems = [];
+
+  if (!rElems || rElems.length <= 0) {
+    return;
+  }
+
+  for (var i = 0; i < rElems.length; i++) {
+    var el = rElems[i];
+
+    if (filters.venues.length > 0) {
+      var isHidden = true;
+
+      for (var j = 0; j < filters.venues.length; j++) {
+        var filter = filters.venues[j];
+
+        /*
+        console.log(el.id)
+        console.log(el.id.substring(6,el.id.length))
+        console.log(parseInt(el.id.substring(6,el.id.length)))
+        console.log(availEvents[0])
+        console.log(availEvents[0].location)
+        
+        */
+        console.log(availEvents[parseInt(el.id.substring(6,el.id.length))].location)
+        console.log(filter)
+
+        if (availEvents[parseInt(el.id.substring(6,el.id.length))].location == filter) {
+          isHidden = false;
+          break;
+        }
+      }
+
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+
+    if (filters.types.length > 0) {
+      var isHidden = true;
+
+      for (var j = 0; j < filters.types.length; j++) {
+        var filter = filters.types[j];
+
+        if (availEvents[parseInt(el.id.substring(6,el.id.length))].type == filter) {
+          isHidden = false;
+          break;
+        }
+      }
+
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+
+    if (filters.times.length > 0) {
+      var isHidden = true;
+
+      for (var j = 0; j < filters.times.length; j++) {
+        var filter = filters.times[j];
+
+        if ((filter == "Morning" && (availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[0].startHour < 12 || availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[1].startHour < 12 || availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[2].startHour < 12)) ||
+            (filter == "Afternoon" && ((availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[0].startHour >= 12 && availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[0].startHour < 17) || (availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[1].startHour >= 12 && availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[1].startHour < 17) || (availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[2].startHour >= 12 && availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[2].startHour < 17))) ||
+            (filter == "Evening" && (availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[0].startHour >= 17 || availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[1].startHour >= 17 || availEvents[parseInt(el.id.substring(6,el.id.length))].availableTimes[2].startHour >= 17))){
+          isHidden = false;
+          break;
+        }
+      }
+
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+
+  }
+  for (var i = 0; i < rElems.length; i++) {
+    rElems[i].style.display = "block";
+  }
+
+  if (hiddenElems.length <= 0) {
+    return;
+  }
+
+  for (var i = 0; i < hiddenElems.length; i++) {
+    hiddenElems[i].style.display = "none";
+  }
+}
+
+//document.getElementById("event_0").style.display = "none";
+
   function applyFilter() {
     var searchValue = document.getElementById("searchInput").value.toLowerCase();
     var filterOption = document.getElementById("filterOptions").value.toLowerCase();
@@ -976,7 +1124,7 @@ const availEventTemplate = document.querySelector('#template-list-event');
       description: 'They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.',
       availableTimes: [{day: 20, startHour: 11.5}, {day: 20, startHour: 13}, {day: 20, startHour: 15.5}],
       duration: 2,
-      location: 'The Saddledome',
+      location: 'Saddledome',
       type: 'Family',
     },
     {
@@ -985,7 +1133,7 @@ const availEventTemplate = document.querySelector('#template-list-event');
       description: 'woah!?! horses and carts! at the GMC stadium',
       availableTimes: [{day: 20, startHour: 10.5}, {day: 20, startHour: 13}, {day: 20, startHour: 16.5}],
       duration: 3,
-      location: 'The Saddledome',
+      location: 'Saddledome',
       type: 'Family',
     },
     {
@@ -1005,17 +1153,15 @@ const availEventTemplate = document.querySelector('#template-list-event');
     availEventNode.querySelector('#list-event').id = "event_" + availEvent.eventID;
     availEventNode.querySelector('#titleButton').innerHTML = availEvent.title + '<i class="fa-solid fa-angle-down"></i>';
     availEventNode.querySelector('#templateDescription').textContent = availEvent.description;
-    availEventNode.querySelector('#timeButton1').textContent = availEvent.availableTimes[0].startHour;
+    availEventNode.querySelector('#timeButton1').textContent = convertNumToTime(availEvent.availableTimes[0].startHour);
     availEventNode.querySelector('#timeButton1').id = availEvent.eventID;
-    availEventNode.querySelector('#timeButton2').textContent = availEvent.availableTimes[1].startHour;
+    availEventNode.querySelector('#timeButton2').textContent = convertNumToTime(availEvent.availableTimes[1].startHour);
     availEventNode.querySelector('#timeButton2').id = availEvent.eventID;
-    availEventNode.querySelector('#timeButton3').textContent = availEvent.availableTimes[2].startHour;
+    availEventNode.querySelector('#timeButton3').textContent = convertNumToTime(availEvent.availableTimes[2].startHour);
     availEventNode.querySelector('#timeButton3').id = availEvent.eventID;
 
     listEvents.appendChild(availEventNode);
   });
-
-  //document.getElementById("event_0").style.display = "none";
 
   var coll = document.getElementsByClassName("collapsible");
   var i;
@@ -1031,7 +1177,36 @@ const availEventTemplate = document.querySelector('#template-list-event');
     }
   });
   } 
-       
+    
+  
+  function convertNumToTime(number) {
+    // Check sign of given number
+    var sign = (number >= 0) ? 1 : -1;
+
+    // Set positive value of number of sign negative
+    number = number * sign;
+
+    // Separate the int from the decimal part
+    var hour = Math.floor(number);
+    var decpart = number - hour;
+
+    var min = 1 / 60;
+    // Round to nearest minute
+    decpart = min * Math.round(decpart / min);
+
+    var minute = Math.floor(decpart * 60) + '';
+
+    // Add padding if need
+    if (minute.length < 2) {
+    minute = '0' + minute; 
+    }
+
+    // Add Sign in final result
+    sign = sign == 1 ? '' : '-';
+
+    // Return concated hours and minutes
+    return sign + hour + ':' + minute;
+}
 
 //!!!Schedule JS
   const startHour = 7;
