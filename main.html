@@ -68,7 +68,7 @@
 
       <div class="side-panel3">
         <div class="events-panel">
-          <h3>All Events</h3>
+          <h3>Events</h3>
 
           <div class="list-events">
             <template id="template-list-event">
@@ -121,9 +121,7 @@
           <label><input type="checkbox" id="venueBCheckbox" onchange="change()" filter="BMO Centre">BMO Centre</label>
           <label><input type="checkbox" id="venueCCheckbox" onchange="change()" filter="Big Four Building">Big Four Building</label>
           <label><input type="checkbox" id="venueDCheckbox" onchange="change()" filter="GMC Stadium">GMC Stadium</label>
-          <label><input type="checkbox" id="venueECheckbox" onchange="change()" filter="Nutrien Western Event Center">Nutrien Western Event Center</label>
-          <label><input type="checkbox" id="venueFCheckbox" onchange="change()" filter="Coca-Cola Stage">Coca-Cola Stage</label>
-        </div>
+          <label><input type="checkbox" id="venueECheckbox" onchange="change()" filter="Nutrien Western Event Center">Nutrien Western Event Center</label>        </div>
         <h3>Times</h3>
         <div class="time-checkboxes checkboxes">
           <label><input type="checkbox" id="morningCheckbox" onchange="change()" filter="Morning">Morning (7:00 AM - 12:00 PM)</label>
@@ -646,7 +644,7 @@
                 const request = {
                   origins: [widget.center],
                   destinations: [place.coords],
-                  travelMode: google.maps.TravelMode.DRIVING,
+                  travelMode: google.maps.TravelMode.WALKING,
                 };
                 distanceMatrixService.getDistanceMatrix(request, function(result, status) {
                   if (status === google.maps.DistanceMatrixStatus.OK) {
@@ -736,7 +734,7 @@ function scrollFunction() {
   if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) {
     document.getElementById("titlelogo").style = "width:100px;height:50px;";
   } else {
-    document.getElementById("titlelogo").style = "width:200px;height:100px;";
+    document.getElementById("titlelogo").style = "width:140px;height:70px;";
   }
 } 
 
@@ -972,16 +970,16 @@ const availEventTemplate = document.querySelector('#template-list-event');
     {
       eventID: 0,
       title: 'Dog Bowl',
-      description: 'The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.',
+      description: 'At the BMO center, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress children of all ages.',
       availableTimes: [{day: 20, startHour: 9}, {day: 20, startHour: 12.5}, {day: 20, startHour: 15.5}],
       duration: 1,
-      location: 'Stampede Grounds',
+      location: 'BMO Center',
       type: 'Children',
     },
     {
       eventID: 1,
       title: 'Motor Bikes',
-      description: 'They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.',
+      description: 'Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts. Fun for the whole family.',
       availableTimes: [{day: 20, startHour: 11.5}, {day: 20, startHour: 13}, {day: 20, startHour: 15.5}],
       duration: 2,
       location: 'Saddledome',
@@ -990,19 +988,19 @@ const availEventTemplate = document.querySelector('#template-list-event');
     {
       eventID: 2,
       title: 'Chuck Wagon',
-      description: 'woah!?! horses and carts! at the GMC stadium',
+      description: 'Fun for the whole family, watch the thrill of horse drawn carrages race to see who is the fastest.',
       availableTimes: [{day: 20, startHour: 10.5}, {day: 20, startHour: 13}, {day: 20, startHour: 16.5}],
       duration: 3,
-      location: 'Saddledome',
+      location: 'GMC Stadium',
       type: 'Family',
     },
     {
       eventID: 3,
       title: 'T-Pain Concert',
-      description: 'This band is super cool, they’re playing at the coca cola stage',
+      description: 'For adults only, check T-Pain hip hop in the Big Four Building.',
       availableTimes: [{day: 20, startHour: 14.5}, {day: 20, startHour: 17}, {day: 20, startHour: 21.5}],
       duration: 2.5,
-      location: 'Coca-Cola Stage',
+      location: 'Big Four Building',
       type: 'Adult',
     },
   ];
