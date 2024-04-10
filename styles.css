@@ -483,6 +483,20 @@ section {
   margin: 10px;
 }
 
+.timeButton{
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  outline: 2px solid black;
+  font-size: 15px;
+  font-family: "Faustina", serif;
+  font-weight: 800;
+  border-radius: 3px;
+}
+
 /* Positioning for the Font Awesome icon inside the button */
 .collapsible {
   position: relative; /* Set button to relative positioning */
