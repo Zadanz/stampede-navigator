@@ -11,9 +11,7 @@ Delaram Bahreini Esfhani delaram.bahreiniesfa@ucalgary.ca
 
 
 # Running Instructions
-1. Download files
-2. In the terminal, from the project directory run the command "start main.html" if on windows, if on mac run the command "open main.html"
-3. The website should open in your default browser
+Go to https://hammerhead-app-n7qdd.ondigitalocean.app/
 
 # Things to do
 ## Map
