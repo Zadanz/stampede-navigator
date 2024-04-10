@@ -483,6 +483,20 @@ section {
   margin: 10px;
 }
 
+/* Positioning for the Font Awesome icon inside the button */
+.collapsible {
+  position: relative; /* Set button to relative positioning */
+  padding-right: 30px; /* Add padding to accommodate icon */
+}
+
+.collapsible i {
+  position: absolute; /* Position the icon absolutely */
+  top: 50%; /* Align the icon vertically to the middle */
+  transform: translateY(-50%); /* Center the icon vertically using translateY */
+  right: 10px; /* Adjust the right position for horizontal alignment */
+}
+
+/* Additional styling for the button */
 .collapsible {
   background-color: #eee;
   color: #444;
@@ -493,15 +507,17 @@ section {
   outline: 2px solid black;
   font-size: 15px;
   font-family: "Faustina", serif;
-  font-optical-sizing: auto;
   font-weight: 800;
-  font-style: normal;
-  border: #000000;
   border-radius: 3px;
-  display:inline-block;
-  white-space: wrap;
-  clear:left;
+  position: relative; /* Ensure relative positioning */
 }
+
+/* Optional: Adjust button appearance */
+.collapsible i {
+  font-size: 20px; /* Adjust icon size */
+}
+
+
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .collapsible:hover {
@@ -609,20 +625,19 @@ gmp-map {
 }
 
 .search-form-container {
-  margin-left: 10px; /* Add the desired margin value */
-  overflow: hidden; /* This can help prevent the unwanted white margin during scrolling */
+  position: relative; /* Ensure relative positioning for absolute children */
 }
-
 .search-form-container form {
-  position: relative;
   width: auto; /* Adjust the width as needed */
   background: var(--color-brand);
   border-radius: 3px;
-  /* border-radius: var(--rad) 0 0 var(--rad); */
   display: flex;
   align-items: center;
 }
 
+.search-input-container {
+  position: relative; /* Container for search input and autocomplete results */
+}
 
 .search-form-container input,
 .search-form-container button {
@@ -635,17 +650,19 @@ gmp-map {
 }
 
 .search-form-container input[type="search"] {
-  outline: 0;
-  flex-grow: 1;
+  height: var(--height);
+  font-family: var(--font-fam);
+  font-size: 1.8rem;
   background: var(--color-light);
   padding: 0 1.6rem;
   border-radius: 3px;
-  /* border-radius: var(--rad) 0 0 var(--rad); */
-  appearance: none;
+  flex-grow: 1;
+  outline: 0;
   transition: all var(--dur) var(--bez);
-  transition-property: width, border-radius;
-  position: relative;
-  margin-right: 10px; /* Add the desired margin value */
+}
+
+.search-form-container input[type="search"]:focus {
+  width: calc(100% - var(--btn-width));
 }
 
 .search-form-container form input[type="search"]:not(:placeholder-shown) {
@@ -655,20 +672,53 @@ gmp-map {
 }
 
 .search-form-container button {
-  display: none;
-  flex-shrink: 0;
+  height: var(--height);
   font-weight: bold;
   background: var(--color-brand);
   border-radius: 3px;
-  /* border-radius: 0 var(--rad) var(--rad) 0; */
+  flex-shrink: 0;
   width: var(--btn-width);
+}
+
+.search-form-container input[type="search"]:focus + .search-suggestions {
+  display: block; /* Show suggestions on input focus */
 }
 
 .search-form-container form input[type="search"]:not(:placeholder-shown) + button {
   display: block;
 }
 
-/* New styles for right corners */
+.search-suggestions {
+  position: absolute;
+  width: 100%; /* Adjust this to match the input width */
+  background: white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  z-index: 100;
+  top: calc(100% + 5px); /* Position below the input */
+  left: 0;
+  display: none; /* Initially hide the suggestions */
+}
+
+.autocomplete-results {
+  position: absolute;
+  top: 100%; /* Position below the search input */
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  z-index: 100;
+  display: none; /* Initially hide the autocomplete results */
+}
+
+.autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-item:hover {
+  background-color: #f0f0f0;
+}
+
 .search-form-container form button {
   border-radius: 3px;
   /* border-radius: 0 var(--rad) var(--rad) 0; */
@@ -683,6 +733,7 @@ gmp-map {
   width: 1px;
   overflow: hidden;
 }
+
 
 .fa-solid fa-triangle-exclamation{
   font-size: 20px;

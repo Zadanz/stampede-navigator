@@ -2,6 +2,12 @@
 <html>
   <head>
     <title>Home</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete Search</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
     <!-- Holtwood One SC Font-->
@@ -29,9 +35,7 @@
           <section class="my-day">
             <header class="custom-header">
               <button class="arrow-button" onclick="previousDay()">&lt;&lt;</button>
-              <h4>  
-                Saturday, July 20th, 2024
-              </h4>
+              <h4 id="currentDateDisplay"></h4>
               <button class="arrow-button" onclick="nextDay()">&gt;&gt;</button>
             </header>
               <div class="calendar">
@@ -65,7 +69,7 @@
       <div class="side-panel3">
         <div class="events-panel">
           <h3>All Events</h3>
-          <button type="button" class="collapsible" style="font-size: 25px;">Dog Bowl</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">Dog Bowl<i class="fa-solid fa-angle-down"></i></button>
           <div class="content">
             <p>The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.</p>
           </div>
@@ -91,7 +95,7 @@
           </timeButtons> 
           <p></p>
 
-          <button type="button" class="collapsible" style="font-size: 25px;">Motor Bikes</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">Motor Bikes<i class="fa-solid fa-angle-down"></i></button></button>
           <div class="content">
             <p>They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.</p>
           </div> 
@@ -102,7 +106,7 @@
           </timeButtons>
           <p></p>
 
-          <button type="button" class="collapsible" style="font-size: 25px;">Chuck Wagon</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">Chuck Wagon<i class="fa-solid fa-angle-down"></i></button></button>
           <div class="content">
             <p>woah!?! horses and carts! at the GMC stadium</p>
           </div> 
@@ -113,7 +117,7 @@
           </timeButtons>
           <p></p>
 
-          <button type="button" class="collapsible" style="font-size: 20px;">T-Pain Concert</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">T-Pain Concert<i class="fa-solid fa-angle-down"></i></button></button>
           <div class="content">
             <p>This band is super cool, theyre playing at the coca cola stage</p>
           </div>
@@ -127,11 +131,12 @@
       <div class="filter-panel">
         <div class="search-form-container">
           <form onsubmit="event.preventDefault();" role="search">
-            <label for="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Search..." autofocus required />
-            <button type="submit">Go</button>    
+              <label for="search">Search for stuff</label>
+              <input id="searchInput" type="search" placeholder="Search..." autofocus required />
+              <div class="autocomplete-results" id="autocompleteResults"></div>
+              <button type="submit">Go</button>
           </form>
-        </div>
+      </div>
         
         
         <!-- <h3>Filter Events</h3>
@@ -874,6 +879,40 @@ function clearFilters() {
   ];
 
 
+
+  // JavaScript for dynamic date navigation
+  const currentDateDisplay = document.getElementById('currentDateDisplay');
+
+// Function to display the current date in the <h4> element
+function displayDate(date) {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    currentDateDisplay.textContent = date.toLocaleDateString('en-US', options);
+}
+
+// Function to navigate to the previous day
+function previousDay() {
+    clearSchedule();
+    currentDate.setDate(currentDate.getDate() - 1);
+    displayDate(currentDate);
+}
+
+// Function to navigate to the next day
+function nextDay() {
+    clearSchedule();
+    currentDate.setDate(currentDate.getDate() + 1);
+    displayDate(currentDate);
+}
+
+function clearSchedule() {
+    const calendarEvents = document.querySelector('.calendar__events');
+    calendarEvents.innerHTML = ''; // Remove all child elements (events)
+}
+
+// Set the initial date to July 5, 2024
+const initialDate = new Date('July 5, 2024');
+const currentDate = new Date(initialDate);
+displayDate(currentDate);
+
 //!!!Schedule JS
   const startHour = 7;
   const endHour = 24;
@@ -950,5 +989,84 @@ function clearFilters() {
       eventNode.classList.add('past');
     }
   });
+
+  function displayEventsForCurrentDate() {
+    clearSchedule(); // Clear existing events before displaying new ones
+
+    events.forEach((event) => {
+        const eventNode = eventTemplate.content.firstElementChild.cloneNode(true);
+        calendarEvents.appendChild(eventNode);
+
+        eventNode.querySelector('.label').innerText = event.title;
+        eventNode.style.setProperty('--start', event.start);
+        eventNode.style.setProperty('--end', event.end);
+
+        if (event.past) {
+            eventNode.classList.add('past');
+        }
+    });
+}
+
+// Call this function initially and whenever the date changes
+displayEventsForCurrentDate();
 //Schedule JS End
+
+const suggestions = [
+  "Dog Bowl",
+  "Motor Bikes",
+  "Chuck Wagon",
+  "T-Pain Concert"
+];
+
+const searchInput = document.getElementById('searchInput');
+const autocompleteResults = document.getElementById('autocompleteResults');
+
+function displayAutocompleteResults() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredSuggestions = suggestions.filter(suggestion =>
+    suggestion.toLowerCase().startsWith(searchTerm)
+  );
+
+  // Clear previous results
+  autocompleteResults.innerHTML = '';
+
+  // Display filtered suggestions
+  if (searchTerm && filteredSuggestions.length > 0) {
+    autocompleteResults.style.display = 'block';
+
+    filteredSuggestions.forEach(suggestion => {
+      const autocompleteItem = document.createElement('div');
+      autocompleteItem.textContent = suggestion;
+      autocompleteItem.classList.add('autocomplete-item');
+
+      autocompleteItem.addEventListener('click', () => {
+        searchInput.value = suggestion;
+        autocompleteResults.style.display = 'none'; // Hide suggestions after selection
+      });
+
+      autocompleteResults.appendChild(autocompleteItem);
+    });
+  } else {
+    autocompleteResults.style.display = 'none';
+  }
+}
+
+// Event listener for input changes
+searchInput.addEventListener('input', displayAutocompleteResults);
+
+// Event listener to hide autocomplete results on outside click
+document.addEventListener('click', event => {
+  if (!autocompleteResults.contains(event.target) && event.target !== searchInput) {
+    autocompleteResults.style.display = 'none';
+  }
+});
+
+// Prevent form submission (optional)
+const form = document.querySelector('form');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  // Perform search or other action here
+});
+
+
 </script>
