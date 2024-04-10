@@ -55,9 +55,12 @@
                 </div>
               </div>
           </section>
-          <i class="fa-solid fa-triangle-exclamation" style="color: #FFD43B; font-size: 2em; padding: 2%;"></i>
-          <b>There are events that overlap.</b>
-        </body>
+          <div class="overlap_warning" id="overlap_warning">
+            <i class="fa-solid fa-triangle-exclamation" style="color: #FFD43B; font-size: 2em; padding: 2%;"></i>
+            <b>There are events that overlap.</b>
+          </div>
+          </body>
+          
       </div>
       <button class="side-panel2-toggle" type="button">
           <span class="sp2-icon-open">My Schedule</span>
@@ -1094,26 +1097,7 @@ const availEventTemplate = document.querySelector('#template-list-event');
     }
   }
   
-  const events = [
-    {
-      start: 9,
-      end: 11,
-      title: 'Dog Bowl',
-      past: true,
-    },
-    {
-      start: 10.5,
-      end: 11.5,
-      title: 'Chuck Wagon',
-      past: true,
-    },
-    {
-      start: 14,
-      end: 15,
-      title: 'Motor Bikes',
-      past:false,
-    },
-  ];  
+  const events = [];  
   const eventTemplate = document
     .querySelector('#template-event'); 
   const calendarEvents = document
@@ -1227,14 +1211,16 @@ function handleTimeButtonClick(event) {
         selectedEvents.push(selectedEvent);
 
         // Check for conflicts with existing selected events
-        const conflict = checkForConflicts(selectedEvents);
+        const conflict = checkForConflicts(events);
 
         if (conflict) {
             // Display a pop-up indicating a schedule conflict
-            alert(`Schedule conflict detected! Adding "${eventTitle}" at ${eventStartTime} causes overlap.`);
+            document.getElementById("overlap_warning").style.display = "block";
+            //alert(`Schedule conflict detected! Adding "${eventTitle}" at ${eventStartTime} causes overlap.`);
             // Remove the last added event from the array
             selectedEvents.pop();
         } else {
+          document.getElementById("overlap_warning").style.display = "none";
             // No conflict, proceed with adding the event to the schedule
             // Add your logic here to add the event to the schedule or perform other actions
             // For example:
