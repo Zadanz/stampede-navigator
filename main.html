@@ -16,12 +16,10 @@
     <script src="https://kit.fontawesome.com/df6965acea.js" crossorigin="anonymous"></script>
 
   </head>
-  <body>
-    <header>
-      <div class="title" style="padding: 20px;">
-        <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
-      </div>
-    </header>
+  
+    <div class="title" id="title_id">
+      <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:140px;height:70px;" id="titlelogo">
+    </div>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="wrapper side-panel-open">
       
@@ -115,7 +113,7 @@
           </timeButtons>
           <p></p>
 
-          <button type="button" class="collapsible" style="font-size: 25px;">T-Pain Concert</button>
+          <button type="button" class="collapsible" style="font-size: 20px;">T-Pain Concert</button>
           <div class="content">
             <p>This band is super cool, theyre playing at the coca cola stage</p>
           </div>
@@ -145,19 +143,21 @@
         
 
         <h3>Locations</h3>
-        <div class="location-checkboxes">
+        <div class="location-checkboxes checkboxes">
           <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
           <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
           <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
+          <label><input type="checkbox" id="venueDCheckbox">GMC Stadium</label>
+          <label><input type="checkbox" id="venueECheckbox">Nutrien Western Event Center</label>
         </div>
         <h3>Times</h3>
-        <div class="time-checkboxes">
+        <div class="time-checkboxes checkboxes">
           <label><input type="checkbox" id="morningCheckbox">Morning</label>
           <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
           <label><input type="checkbox" id="eveningCheckbox">Evening</label>
         </div>
         <h3>Event Type</h3>
-        <div class="eventType-checkboxes">
+        <div class="eventType-checkboxes checkboxes">
           <label><input type="checkbox" id="familyCheckbox">Family</label>
           <label><input type="checkbox" id="childrenCheckbox">Children</label>
           <label><input type="checkbox" id="adultCheckbox">Adult</label>
@@ -265,7 +265,7 @@
               {{#if photos}}
                 <div class="photos section">
                   {{#each photos}}
-                    <button class="photo" style="background-image:url({{urlLarge}})" aria-label="show photo in viewer"></button>
+                    <button class="photo" style="background-image:url(urlLarge)" aria-label="show photo in viewer"></button>
                   {{/each}}
                 </div>
               {{/if}}
@@ -741,80 +741,28 @@
 
 
       
-      <button class="side-panel-toggle" type="button" title="Filters">
-          <span class="material-icons sp-icon-open">keyboard_double_arrow_down</span>
-          <span class="sp-icon-open">Filters</span>
-          
-          <span class="material-icons sp-icon-close">keyboard_double_arrow_up</span>
-      </button>
-      <div class="side-panel">
-        <div class="search-form-container">
-          <form onsubmit="event.preventDefault();" role="search">
-            <label for="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Search..." autofocus required />
-            <button type="submit">Go</button>    
-          </form>
-        </div>
-        
-        
-        <!-- <h3>Filter Events</h3>
-        <div class="search-filter">
-            <input type="text" id="searchInput" placeholder="Search for event...">
-            <button onclick="applyFilter()">Search</button>
-        </div>
-        <h2>Filter for Events</h2> -->
-        
-
-        <h3>Locations</h3>
-        <div class="location-checkboxes">
-          <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
-          <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
-          <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
-        </div>
-        <h3>Times</h3>
-        <div class="time-checkboxes">
-          <label><input type="checkbox" id="morningCheckbox">Morning</label>
-          <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
-          <label><input type="checkbox" id="eveningCheckbox">Evening</label>
-        </div>
-        <h3>Event Type</h3>
-        <div class="eventType-checkboxes">
-          <label><input type="checkbox" id="familyCheckbox">Family</label>
-          <label><input type="checkbox" id="childrenCheckbox">Children</label>
-          <label><input type="checkbox" id="adultCheckbox">Adult</label>
-        </div>
-        <div class = "centered-div">
-          <button class = clearButton onclick="clearFilters()">Clear Filters</button>
-        </div>
-        <!-- Old filters options, for reference 
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
-          <label><input type="checkbox" id="timesCheckbox"> Time</label>
-          <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
-        </div>
-        <div class="container">
-          <div class="filterDiv locations">Venue A</div>
-          <div class="filterDiv times">Morning</div>
-          <div class="filterDiv eventTypes">Family</div>
-          <div class="filterDiv locations">Venue B</div>
-          <div class="filterDiv times">Afternoon</div>
-          <div class="filterDiv eventTypes">Children</div>
-          <div class="filterDiv locations">Venue C</div>
-          <div class="filterDiv times">Evening</div>
-          <div class="filterDiv eventTypes">Adult only</div>
-        </div> -->
-      </div>
     </div>
-  </body>
 </html>
 
 <script>
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) {
+    document.getElementById("titlelogo").style = "width:100px;height:50px;";
+  } else {
+    document.getElementById("titlelogo").style = "width:200px;height:100px;";
+  }
+} 
 
 function clearFilters() {
   // Unselect checkboxes in the location section
   document.getElementById("venueACheckbox").checked = false;
   document.getElementById("venueBCheckbox").checked = false;
   document.getElementById("venueCCheckbox").checked = false;
+  document.getElementById("venueDCheckbox").checked = false;
+  document.getElementById("venueECheckbox").checked = false;
 
   // Unselect checkboxes in the time section
   document.getElementById("morningCheckbox").checked = false;
@@ -871,15 +819,15 @@ function clearFilters() {
   //filterSelection();
 
 //!!!Side panel JS start
-  document.querySelector(".side-panel-toggle").addEventListener("click", () => {
-  document.querySelector(".wrapper").classList.toggle("side-panel-open");
-  });
-
+  // document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+  // document.querySelector(".wrapper").classList.toggle("side-panel-open");
+  // });
+  document.querySelector(".wrapper").classList.toggle("side-panel2-open")
   document.querySelector(".side-panel2-toggle").addEventListener("click", () => {
   document.querySelector(".wrapper").classList.toggle("side-panel2-open");
   });
 
-
+  document.querySelector(".wrapper").classList.toggle("side-panel3-open")
   document.querySelector(".side-panel3-toggle").addEventListener("click", () => {
   document.querySelector(".wrapper").classList.toggle("side-panel3-open");
   });
