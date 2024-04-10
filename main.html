@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete Search</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
     <!-- Holtwood One SC Font-->
@@ -71,7 +73,7 @@
           <div class="list-events">
             <template id="template-list-event">
               <div id = "list-event">
-                <button type="button" class="collapsible" id="titleButton" style="font-size: 25px;">Template Title</button>
+                <button type="button" class="collapsible" id="titleButton" style="font-size: 25px;">Template Title </button>
                 <div class="content">
                   <p id="templateDescription">Template Description</p>
                 </div>
@@ -157,8 +159,11 @@
         <div class="search-form-container">
           <form onsubmit="event.preventDefault();" role="search">
             <label for="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Search..." autofocus required />
-            <button type="submit">Go</button>    
+            <div class="search-input-container">
+              <input id="searchInput" type="search" placeholder="Search..." autofocus required />
+              <div class="autocomplete-results" id="autocompleteResults"></div>
+            </div>
+            <button type="submit">Go</button>   
           </form>
         </div>
         
@@ -998,7 +1003,7 @@ const availEventTemplate = document.querySelector('#template-list-event');
     const availEventNode = availEventTemplate.content.cloneNode(true);
     
     availEventNode.querySelector('#list-event').id = "event_" + availEvent.eventID;
-    availEventNode.querySelector('#titleButton').textContent = availEvent.title;
+    availEventNode.querySelector('#titleButton').innerHTML = availEvent.title + '<i class="fa-solid fa-angle-down"></i>';
     availEventNode.querySelector('#templateDescription').textContent = availEvent.description;
     availEventNode.querySelector('#timeButton1').textContent = availEvent.availableTimes[0].startHour;
     availEventNode.querySelector('#timeButton1').id = availEvent.eventID;
@@ -1160,4 +1165,62 @@ const availEventTemplate = document.querySelector('#template-list-event');
     });
   }
 //Schedule JS End
+
+const suggestions = [
+  "Dog Bowl",
+  "Motor Bikes",
+  "Chuck Wagon",
+  "T-Pain Concert"
+];
+
+const searchInput = document.getElementById('searchInput');
+const autocompleteResults = document.getElementById('autocompleteResults');
+
+function displayAutocompleteResults() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredSuggestions = suggestions.filter(suggestion =>
+    suggestion.toLowerCase().startsWith(searchTerm)
+  );
+
+  // Clear previous results
+  autocompleteResults.innerHTML = '';
+
+  // Display filtered suggestions
+  if (searchTerm && filteredSuggestions.length > 0) {
+    autocompleteResults.style.display = 'block';
+
+    filteredSuggestions.forEach(suggestion => {
+      const autocompleteItem = document.createElement('div');
+      autocompleteItem.textContent = suggestion;
+      autocompleteItem.classList.add('autocomplete-item');
+
+      autocompleteItem.addEventListener('click', () => {
+        searchInput.value = suggestion;
+        autocompleteResults.style.display = 'none'; // Hide suggestions after selection
+      });
+
+      autocompleteResults.appendChild(autocompleteItem);
+    });
+  } else {
+    autocompleteResults.style.display = 'none';
+  }
+}
+
+// Event listener for input changes
+searchInput.addEventListener('input', displayAutocompleteResults);
+
+// Event listener to hide autocomplete results on outside click
+document.addEventListener('click', event => {
+  if (!autocompleteResults.contains(event.target) && event.target !== searchInput) {
+    autocompleteResults.style.display = 'none';
+  }
+});
+
+// Prevent form submission (optional)
+const form = document.querySelector('form');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  // Perform search or other action here
+});
+
 </script>
