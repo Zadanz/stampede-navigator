@@ -471,6 +471,20 @@ section {
   vertical-align: top;
 }
 
+/* Positioning for the Font Awesome icon inside the button */
+.collapsible {
+  position: relative; /* Set button to relative positioning */
+  padding-right: 30px; /* Add padding to accommodate icon */
+}
+
+.collapsible i {
+  position: absolute; /* Position the icon absolutely */
+  top: 50%; /* Align the icon vertically to the middle */
+  transform: translateY(-50%); /* Center the icon vertically using translateY */
+  right: 10px; /* Adjust the right position for horizontal alignment */
+}
+
+/* Additional styling for the button */
 .collapsible {
   background-color: #eee;
   color: #444;
@@ -481,15 +495,17 @@ section {
   outline: 2px solid black;
   font-size: 15px;
   font-family: "Faustina", serif;
-  font-optical-sizing: auto;
   font-weight: 800;
-  font-style: normal;
-  border: #000000;
   border-radius: 3px;
-  display:inline-block;
-  white-space: wrap;
-  clear:left;
+  position: relative; /* Ensure relative positioning */
 }
+
+/* Optional: Adjust button appearance */
+.collapsible i {
+  font-size: 20px; /* Adjust icon size */
+}
+
+
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .collapsible:hover {
@@ -512,19 +528,6 @@ section {
   color: black;
 }
 
-
-/* Style the collapsible content. Note: hidden by default */
-/* .time-content {
-  padding: 0 30px;
-  text-align: center;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
-  color: black;
-  position: absolute; 
-  top: 55px;
-  right: 70px;
-} */
 
 timeButtons{
   display: flex;
