@@ -93,66 +93,6 @@
             </template>
           </div>
 
-          <!--
-          <button type="button" class="collapsible" style="font-size: 25px;">Dog Bowl<i class="fa-solid fa-angle-down"></i></button>
-          <div class="content">
-            <p>The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.</p>
-          </div>
-          <timeButtons>
-            <div style="width:33%;">
-              <button type="button" class="oldactivitytime collapsible">9:00am</button>
-              <div class="time-content">
-                <p>boop</p>
-              </div>
-            </div>
-            <div style="width:33%;">
-              <button type="button" class="activitytime collapsible">12:30pm</button>
-              <div class="time-content">
-                <p>boop</p>
-              </div>
-            </div>
-            <div style="width:33%;">
-              <button type="button" class="activitytime collapsible">3:30pm</button>
-              <div class="time-content">
-              <p>boop</p>
-            </div>
-            </div>
-          </timeButtons> 
-          <p></p>
-
-          <button type="button" class="collapsible" style="font-size: 25px;">Motor Bikes<i class="fa-solid fa-angle-down"></i></button></button>
-          <div class="content">
-            <p>They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.</p>
-          </div> 
-          <timeButtons>
-            <button type="button" class="oldactivitytime" >11:30am</button>
-            <button type="button" class="activitytime">1:00pm</button>
-            <button type="button" class="activitytime">3:30pm</button>
-          </timeButtons>
-          <p></p>
-
-          <button type="button" class="collapsible" style="font-size: 25px;">Chuck Wagon<i class="fa-solid fa-angle-down"></i></button></button>
-          <div class="content">
-            <p>woah!?! horses and carts! at the GMC stadium</p>
-          </div> 
-          <timeButtons>
-            <button type="button" class="oldactivitytime">10:30am</button>
-            <button type="button" class="oldactivitytime">12:00pm</button>
-            <button type="button" class="activitytime">4:30pm</button>
-          </timeButtons>
-          <p></p>
-
-          <button type="button" class="collapsible" style="font-size: 25px;">T-Pain Concert<i class="fa-solid fa-angle-down"></i></button></button>
-          <div class="content">
-            <p>This band is super cool, theyre playing at the coca cola stage</p>
-          </div>
-          <timeButtons>
-            <button type="button" class="activitytime">2:30pm</button>
-            <button type="button" class="activitytime">5:00pm</button>
-            <button type="button" class="activitytime">9:30pm</button>
-          </timeButtons> 
-          <p></p>
-       -->
 
       </div>
       <div class="filter-panel">
@@ -199,23 +139,7 @@
         <div class = "centered-div">
           <button class = clearButton onclick="clearFilters()">Clear Filters</button>
         </div>
-        <!-- Old filters options, for reference 
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
-          <label><input type="checkbox" id="timesCheckbox"> Time</label>
-          <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
-        </div>
-        <div class="container">
-          <div class="filterDiv locations">Venue A</div>
-          <div class="filterDiv times">Morning</div>
-          <div class="filterDiv eventTypes">Family</div>
-          <div class="filterDiv locations">Venue B</div>
-          <div class="filterDiv times">Afternoon</div>
-          <div class="filterDiv eventTypes">Children</div>
-          <div class="filterDiv locations">Venue C</div>
-          <div class="filterDiv times">Evening</div>
-          <div class="filterDiv eventTypes">Adult only</div>
-        </div> -->
+        
       </div>
       </div>
       <button class="side-panel3-toggle" type="button">
@@ -774,71 +698,7 @@
       </script>
 
 
-      <!--
-    </div>
-      <button class="side-panel-toggle" type="button" title="Filters">
-          <span class="material-icons sp-icon-open">keyboard_double_arrow_down</span>
-          <span class="sp-icon-open">Filters</span>
-          
-          <span class="material-icons sp-icon-close">keyboard_double_arrow_up</span>
-      </button>
-      <div class="side-panel">
-        <div class="search-form-container">
-          <form onsubmit="event.preventDefault();" role="search">
-            <label for="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Search..." autofocus required />
-            <button type="submit">Go</button>    
-          </form>
-        </div>
-        
-        
-        <h3>Filter Events</h3>
-        <div class="search-filter">
-            <input type="text" id="searchInput" placeholder="Search for event...">
-            <button onclick="applyFilter()">Search</button>
-        </div>
-        <h2>Filter for Events</h2>
-        
-
-        <h3>Locations</h3>
-        <div class="location-checkboxes">
-          <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
-          <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
-          <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
-        </div>
-        <h3>Times</h3>
-        <div class="time-checkboxes">
-          <label><input type="checkbox" id="morningCheckbox">Morning</label>
-          <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
-          <label><input type="checkbox" id="eveningCheckbox">Evening</label>
-        </div>
-        <h3>Event Type</h3>
-        <div class="eventType-checkboxes">
-          <label><input type="checkbox" id="familyCheckbox">Family</label>
-          <label><input type="checkbox" id="childrenCheckbox">Children</label>
-          <label><input type="checkbox" id="adultCheckbox">Adult</label>
-        </div>
-        <div class = "centered-div">
-          <button class = clearButton onclick="clearFilters()">Clear Filters</button>
-        </div>
-        
-        Old filters options, for reference 
-        <div class="checkbox-group">
-          <label><input type="checkbox" id="locationsCheckbox"> Locations</label>
-          <label><input type="checkbox" id="timesCheckbox"> Time</label>
-          <label><input type="checkbox" id="eventTypesCheckbox"> Event Types</label>
-        </div>
-        <div class="container">
-          <div class="filterDiv locations">Venue A</div>
-          <div class="filterDiv times">Morning</div>
-          <div class="filterDiv eventTypes">Family</div>
-          <div class="filterDiv locations">Venue B</div>
-          <div class="filterDiv times">Afternoon</div>
-          <div class="filterDiv eventTypes">Children</div>
-          <div class="filterDiv locations">Venue C</div>
-          <div class="filterDiv times">Evening</div>
-          <div class="filterDiv eventTypes">Adult only</div>
-        </div> -->
+      
       </div>
     </div>
   </body>
@@ -1254,7 +1114,7 @@ const availEventTemplate = document.querySelector('#template-list-event');
       title: 'Motor Bikes',
       past:false,
     },
-  ];
+  ];  
   const eventTemplate = document
     .querySelector('#template-event'); 
   const calendarEvents = document
@@ -1285,6 +1145,8 @@ const availEventTemplate = document.querySelector('#template-list-event');
       eventNode.classList.add('past');
     }
   });
+
+  
 
   var collTime = document.getElementsByClassName("timeButton");
   for (var j = 0; j < collTime.length; j++){
@@ -1339,6 +1201,74 @@ const availEventTemplate = document.querySelector('#template-list-event');
       }
     });
   }
+
+  // Array to keep track of selected event start times and durations
+let selectedEvents = [];
+
+// Function to handle time button clicks
+function handleTimeButtonClick(event) {
+    const clickedButton = event.target;
+
+    // Extract event details from the clicked button
+    const eventId = parseInt(clickedButton.id); // Assuming button id corresponds to event ID
+    const eventTitle = availEvents[eventId].title;
+    const eventStartTime = parseFloat(clickedButton.textContent);
+    const eventDuration = availEvents[eventId].duration;
+
+    // Check if the event is already selected (clicked again)
+    const isAlreadySelected = selectedEvents.some(event => event.id === eventId);
+
+    if (!isAlreadySelected) {
+        // Add the selected event to the array
+        const selectedEvent = {
+            id: eventId,
+            start: eventStartTime,
+            end: eventStartTime + eventDuration
+        };
+        selectedEvents.push(selectedEvent);
+
+        // Check for conflicts with existing selected events
+        const conflict = checkForConflicts(selectedEvents);
+
+        if (conflict) {
+            // Display a pop-up indicating a schedule conflict
+            alert(`Schedule conflict detected! Adding "${eventTitle}" at ${eventStartTime} is not possible due to overlap.`);
+            // Remove the last added event from the array
+            selectedEvents.pop();
+        } else {
+            // No conflict, proceed with adding the event to the schedule
+            // Add your logic here to add the event to the schedule or perform other actions
+            // For example:
+            // addToSchedule(eventId, eventStartTime);
+            // updateUI();
+        }
+    }
+}
+
+// Function to check for conflicts among selected events
+function checkForConflicts(events) {
+    // Iterate over selected events and check for overlaps
+    for (let i = 0; i < events.length; i++) {
+        for (let j = i + 1; j < events.length; j++) {
+            if (
+                events[i].start < events[j].end &&
+                events[j].start < events[i].end
+            ) {
+                // Conflict detected
+                return true;
+            }
+        }
+    }
+    // No conflicts found
+    return false;
+}
+
+// Add event listeners to all time buttons
+const timeButtons = document.querySelectorAll('.timeButton');
+timeButtons.forEach(button => {
+    button.addEventListener('click', handleTimeButtonClick);
+});
+
 //Schedule JS End
 
 const suggestions = [
