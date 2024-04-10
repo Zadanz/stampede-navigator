@@ -13,6 +13,11 @@ Delaram Bahreini Esfhani delaram.bahreiniesfa@ucalgary.ca
 # Running Instructions
 Go to https://hammerhead-app-n7qdd.ondigitalocean.app/
 
+Or run locally:
+1. Download files
+2. In the terminal, from the project directory run the command "start main.html" if on windows, if on mac run the command "open main.html"
+3. The website should open in your default browser
+
 # Things to do
 ## Map
 On the map, scroll or press the plus (+) button to get a clearer view of the building shapes on the map
