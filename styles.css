@@ -510,6 +510,10 @@ section {
   right: 10px; /* Adjust the right position for horizontal alignment */
 }
 
+.rotate.collapsible i {
+    transform: rotate(180deg) translateY(50%);
+}
+
 /* Additional styling for the button */
 .collapsible {
   background-color: #eee;
