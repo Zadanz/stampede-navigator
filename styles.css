@@ -471,6 +471,26 @@ section {
   vertical-align: top;
 }
 
+.timeButton{
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  outline: 2px solid black;
+  font-size: 15px;
+  font-family: "Faustina", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  border: #000000;
+  border-radius: 3px;
+  display:inline-block;
+  white-space: wrap;
+  clear:left;
+}
+
 .collapsible {
   background-color: #eee;
   color: #444;
