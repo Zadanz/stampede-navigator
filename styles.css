@@ -11,15 +11,20 @@ body {
 
 
 .title {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
   display: flex;
+  flex: auto;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(152, 8, 0);
+  background-color: white;
   color: white;
-  margin-top: 0px;
+  margin-top:0px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 .wrapper {
   display: flex;
@@ -130,6 +135,7 @@ body {
 }
 
 .side-panel2 {
+  margin-top:100px;
   display: none;
   width: 20%;
   min-width: 250px;
@@ -170,6 +176,10 @@ body {
   cursor: pointer;
 }
 
+.checkboxes {
+  display: grid;
+}
+
 .side-panel3-toggle:hover {
   background: #e6cd84;
 }
@@ -179,6 +189,7 @@ body {
 }
 
 .side-panel3 {
+  margin-top:100px;
   overflow: auto;
   display: none;
   width: 25% !important;
@@ -469,28 +480,23 @@ section {
   white-space: wrap;
   width: 50%;
   vertical-align: top;
+  margin: 10px;
 }
 
-.timeButton{
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  outline: 2px solid black;
-  font-size: 15px;
-  font-family: "Faustina", serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-  border: #000000;
-  border-radius: 3px;
-  display:inline-block;
-  white-space: wrap;
-  clear:left;
+/* Positioning for the Font Awesome icon inside the button */
+.collapsible {
+  position: relative; /* Set button to relative positioning */
+  padding-right: 30px; /* Add padding to accommodate icon */
 }
 
+.collapsible i {
+  position: absolute; /* Position the icon absolutely */
+  top: 50%; /* Align the icon vertically to the middle */
+  transform: translateY(-50%); /* Center the icon vertically using translateY */
+  right: 10px; /* Adjust the right position for horizontal alignment */
+}
+
+/* Additional styling for the button */
 .collapsible {
   background-color: #eee;
   color: #444;
@@ -501,15 +507,17 @@ section {
   outline: 2px solid black;
   font-size: 15px;
   font-family: "Faustina", serif;
-  font-optical-sizing: auto;
   font-weight: 800;
-  font-style: normal;
-  border: #000000;
   border-radius: 3px;
-  display:inline-block;
-  white-space: wrap;
-  clear:left;
+  position: relative; /* Ensure relative positioning */
 }
+
+/* Optional: Adjust button appearance */
+.collapsible i {
+  font-size: 20px; /* Adjust icon size */
+}
+
+
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .collapsible:hover {
@@ -524,6 +532,7 @@ section {
   background-color: #f1f1f1;
   color: black;
   position: relative;
+  font-size: 14px;
 }
 .time-content {
   display: none;
@@ -531,6 +540,7 @@ section {
   background-color: #f1f1f1;
   color: black;
 }
+
 
 
 /* Style the collapsible content. Note: hidden by default */

@@ -20,12 +20,10 @@
     <script src="https://kit.fontawesome.com/df6965acea.js" crossorigin="anonymous"></script>
 
   </head>
-  <body>
-    <header>
-      <div class="title" style="padding: 20px;">
-        <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:200px;height:100px;">
-      </div>
-    </header>
+  
+    <div class="title" id="title_id">
+      <img src="images/Calgary_Stampede_Logo.svg_-1052676545.png" style="width:140px;height:70px;" id="titlelogo">
+    </div>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="wrapper side-panel-open">
       
@@ -94,7 +92,7 @@
           </div>
 
           <!--
-          <button type="button" class="collapsible" style="font-size: 25px;">Dog Bowl</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">Dog Bowl<i class="fa-solid fa-angle-down"></i></button>
           <div class="content">
             <p>The Dog Bowl presented by Voilà brings The Canine Stars to Stampede Park, an elite troupe of highly-trained pupper athletes who are paws-down the most lovable performers around. From agility poles and dock-diving, to frisbee and freestyle dancing, this action-packed show is sure to impress the whole family.</p>
           </div>
@@ -120,7 +118,7 @@
           </timeButtons> 
           <p></p>
 
-          <button type="button" class="collapsible" style="font-size: 25px;">Motor Bikes</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">Motor Bikes<i class="fa-solid fa-angle-down"></i></button></button>
           <div class="content">
             <p>They’re very skilled, very brave and have tons of adrenaline. Located across from the Saddledome, watch these motocross athletes at the Monster Energy Compound reach new heights as they showcase their skills and perform gravity-defying stunts.</p>
           </div> 
@@ -131,7 +129,7 @@
           </timeButtons>
           <p></p>
 
-          <button type="button" class="collapsible" style="font-size: 25px;">Chuck Wagon</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">Chuck Wagon<i class="fa-solid fa-angle-down"></i></button></button>
           <div class="content">
             <p>woah!?! horses and carts! at the GMC stadium</p>
           </div> 
@@ -142,7 +140,7 @@
           </timeButtons>
           <p></p>
 
-          <button type="button" class="collapsible" style="font-size: 25px;">T-Pain Concert</button>
+          <button type="button" class="collapsible" style="font-size: 25px;">T-Pain Concert<i class="fa-solid fa-angle-down"></i></button></button>
           <div class="content">
             <p>This band is super cool, theyre playing at the coca cola stage</p>
           </div>
@@ -173,19 +171,21 @@
         
 
         <h3>Locations</h3>
-        <div class="location-checkboxes">
+        <div class="location-checkboxes checkboxes">
           <label><input type="checkbox" id="venueACheckbox">Saddledome</label>
           <label><input type="checkbox" id="venueBCheckbox">BMO Centre</label>
           <label><input type="checkbox" id="venueCCheckbox">Big Four Building</label>
+          <label><input type="checkbox" id="venueDCheckbox">GMC Stadium</label>
+          <label><input type="checkbox" id="venueECheckbox">Nutrien Western Event Center</label>
         </div>
         <h3>Times</h3>
-        <div class="time-checkboxes">
+        <div class="time-checkboxes checkboxes">
           <label><input type="checkbox" id="morningCheckbox">Morning</label>
           <label><input type="checkbox" id="afternoonCheckbox">Afternoon</label>
           <label><input type="checkbox" id="eveningCheckbox">Evening</label>
         </div>
         <h3>Event Type</h3>
-        <div class="eventType-checkboxes">
+        <div class="eventType-checkboxes checkboxes">
           <label><input type="checkbox" id="familyCheckbox">Family</label>
           <label><input type="checkbox" id="childrenCheckbox">Children</label>
           <label><input type="checkbox" id="adultCheckbox">Adult</label>
@@ -293,7 +293,7 @@
               {{#if photos}}
                 <div class="photos section">
                   {{#each photos}}
-                    <button class="photo" style="background-image:url({{urlLarge}})" aria-label="show photo in viewer"></button>
+                    <button class="photo" style="background-image:url(urlLarge)" aria-label="show photo in viewer"></button>
                   {{/each}}
                 </div>
               {{/if}}
@@ -769,6 +769,7 @@
 
 
       
+    </div>
       <button class="side-panel-toggle" type="button" title="Filters">
           <span class="material-icons sp-icon-open">keyboard_double_arrow_down</span>
           <span class="sp-icon-open">Filters</span>
@@ -862,12 +863,23 @@ function nextDay() {
 // Initialize with the current date
 const currentDate = new Date();
 displayDate(currentDate);
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) {
+    document.getElementById("titlelogo").style = "width:100px;height:50px;";
+  } else {
+    document.getElementById("titlelogo").style = "width:200px;height:100px;";
+  }
+} 
 
 function clearFilters() {
   // Unselect checkboxes in the location section
   document.getElementById("venueACheckbox").checked = false;
   document.getElementById("venueBCheckbox").checked = false;
   document.getElementById("venueCCheckbox").checked = false;
+  document.getElementById("venueDCheckbox").checked = false;
+  document.getElementById("venueECheckbox").checked = false;
 
   // Unselect checkboxes in the time section
   document.getElementById("morningCheckbox").checked = false;
@@ -924,15 +936,15 @@ function clearFilters() {
   //filterSelection();
 
 //!!!Side panel JS start
-  document.querySelector(".side-panel-toggle").addEventListener("click", () => {
-  document.querySelector(".wrapper").classList.toggle("side-panel-open");
-  });
-
+  // document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+  // document.querySelector(".wrapper").classList.toggle("side-panel-open");
+  // });
+  document.querySelector(".wrapper").classList.toggle("side-panel2-open")
   document.querySelector(".side-panel2-toggle").addEventListener("click", () => {
   document.querySelector(".wrapper").classList.toggle("side-panel2-open");
   });
 
-
+  document.querySelector(".wrapper").classList.toggle("side-panel3-open")
   document.querySelector(".side-panel3-toggle").addEventListener("click", () => {
   document.querySelector(".wrapper").classList.toggle("side-panel3-open");
   });
