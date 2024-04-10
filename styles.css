@@ -595,11 +595,8 @@ gmp-map {
 }
 
 .search-form-container {
-  margin-left: 10px; /* Add the desired margin value */
-  overflow: hidden; /* This can help prevent the unwanted white margin during scrolling */
-  position: relative; /* Make the container relative for positioning */
+  position: relative; /* Ensure relative positioning for absolute children */
 }
-
 .search-form-container form {
   width: auto; /* Adjust the width as needed */
   background: var(--color-brand);
@@ -608,6 +605,9 @@ gmp-map {
   align-items: center;
 }
 
+.search-input-container {
+  position: relative; /* Container for search input and autocomplete results */
+}
 
 .search-form-container input,
 .search-form-container button {
@@ -650,6 +650,14 @@ gmp-map {
   width: var(--btn-width);
 }
 
+.search-form-container input[type="search"]:focus + .search-suggestions {
+  display: block; /* Show suggestions on input focus */
+}
+
+.search-form-container form input[type="search"]:not(:placeholder-shown) + button {
+  display: block;
+}
+
 .search-suggestions {
   position: absolute;
   width: 100%; /* Adjust this to match the input width */
@@ -661,15 +669,26 @@ gmp-map {
   display: none; /* Initially hide the suggestions */
 }
 
-.search-form-container input[type="search"]:focus + .search-suggestions {
-  display: block; /* Show suggestions on input focus */
+.autocomplete-results {
+  position: absolute;
+  top: 100%; /* Position below the search input */
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  z-index: 100;
+  display: none; /* Initially hide the autocomplete results */
 }
 
-.search-form-container form input[type="search"]:not(:placeholder-shown) + button {
-  display: block;
+.autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
 }
 
-/* New styles for right corners */
+.autocomplete-item:hover {
+  background-color: #f0f0f0;
+}
+
 .search-form-container form button {
   border-radius: 3px;
   /* border-radius: 0 var(--rad) var(--rad) 0; */
@@ -684,6 +703,7 @@ gmp-map {
   width: 1px;
   overflow: hidden;
 }
+
 
 .fa-solid fa-triangle-exclamation{
   font-size: 20px;

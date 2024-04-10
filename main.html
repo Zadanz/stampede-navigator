@@ -756,8 +756,11 @@
         <div class="search-form-container">
           <form onsubmit="event.preventDefault();" role="search">
             <label for="search">Search for stuff</label>
-            <input id="search" type="search" placeholder="Search..." autofocus required />
-            <button type="submit">Go</button>    
+            <div class="search-input-container">
+              <input id="searchInput" type="search" placeholder="Search..." autofocus required />
+              <div class="autocomplete-results" id="autocompleteResults"></div>
+            </div>
+            <button type="submit">Go</button>
           </form>
         </div>
         
@@ -1066,7 +1069,7 @@ displayEventsForCurrentDate();
 //Schedule JS End
 
 const suggestions = [
-  "Dog Bowl", 
+  "Dog Bowl",
   "Motor Bikes",
   "Chuck Wagon",
   "T-Pain Concert"
@@ -1075,36 +1078,34 @@ const suggestions = [
 const searchInput = document.getElementById('searchInput');
 const autocompleteResults = document.getElementById('autocompleteResults');
 
-// Function to filter and display autocomplete suggestions
 function displayAutocompleteResults() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const filteredSuggestions = suggestions.filter(suggestion =>
-        suggestion.toLowerCase().startsWith(searchTerm)
-    );
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredSuggestions = suggestions.filter(suggestion =>
+    suggestion.toLowerCase().startsWith(searchTerm)
+  );
 
-    // Clear previous results
-    autocompleteResults.innerHTML = '';
+  // Clear previous results
+  autocompleteResults.innerHTML = '';
 
-    // Display filtered suggestions
+  // Display filtered suggestions
+  if (searchTerm && filteredSuggestions.length > 0) {
+    autocompleteResults.style.display = 'block';
+
     filteredSuggestions.forEach(suggestion => {
-        const autocompleteItem = document.createElement('div');
-        autocompleteItem.textContent = suggestion;
-        autocompleteItem.classList.add('autocomplete-item');
+      const autocompleteItem = document.createElement('div');
+      autocompleteItem.textContent = suggestion;
+      autocompleteItem.classList.add('autocomplete-item');
 
-        autocompleteItem.addEventListener('click', () => {
-            searchInput.value = suggestion;
-            autocompleteResults.innerHTML = '';
-        });
+      autocompleteItem.addEventListener('click', () => {
+        searchInput.value = suggestion;
+        autocompleteResults.style.display = 'none'; // Hide suggestions after selection
+      });
 
-        autocompleteResults.appendChild(autocompleteItem);
+      autocompleteResults.appendChild(autocompleteItem);
     });
-
-    // Show/hide autocomplete results container
-    if (filteredSuggestions.length > 0) {
-        autocompleteResults.style.display = 'block';
-    } else {
-        autocompleteResults.style.display = 'none';
-    }
+  } else {
+    autocompleteResults.style.display = 'none';
+  }
 }
 
 // Event listener for input changes
@@ -1112,16 +1113,17 @@ searchInput.addEventListener('input', displayAutocompleteResults);
 
 // Event listener to hide autocomplete results on outside click
 document.addEventListener('click', event => {
-    if (!autocompleteResults.contains(event.target) && event.target !== searchInput) {
-        autocompleteResults.innerHTML = '';
-    }
+  if (!autocompleteResults.contains(event.target) && event.target !== searchInput) {
+    autocompleteResults.style.display = 'none';
+  }
 });
 
 // Prevent form submission (optional)
 const form = document.querySelector('form');
 form.addEventListener('submit', event => {
-    event.preventDefault();
-    // Perform search or other action here
+  event.preventDefault();
+  // Perform search or other action here
 });
+
 
 </script>
