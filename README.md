@@ -23,7 +23,7 @@ Clicking the red pin icons will provide a simple navigation route from the users
 
 
 ## Events Panel
-The events panel can be open and closed using the yellow double arrow button on the side of the panel. When closed, the side button will still be avalible to the user, and is labeled "All Events" so the user can clearly distinguish the closed tab.
+The events panel can be open and closed using the yellow double arrow (<< when open >> when closed) button on the side of the panel. When closed, the side button will still be avalible to the user, and is labeled "All Events" so the user can clearly distinguish the closed tab.
 
 When the events panel is open, the user can filter the results using the checkboxes on the side. Multiple filters can be selected to show multiple event types.
 
