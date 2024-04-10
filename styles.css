@@ -11,15 +11,20 @@ body {
 
 
 .title {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
   display: flex;
+  flex: auto;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(152, 8, 0);
+  background-color: white;
   color: white;
-  margin-top: 0px;
+  margin-top:0px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 .wrapper {
   display: flex;
@@ -130,6 +135,7 @@ body {
 }
 
 .side-panel2 {
+  margin-top:100px;
   display: none;
   width: 20%;
   min-width: 250px;
@@ -170,6 +176,10 @@ body {
   cursor: pointer;
 }
 
+.checkboxes {
+  display: grid;
+}
+
 .side-panel3-toggle:hover {
   background: #e6cd84;
 }
@@ -179,6 +189,7 @@ body {
 }
 
 .side-panel3 {
+  margin-top:100px;
   overflow: auto;
   display: none;
   width: 25% !important;
@@ -469,6 +480,7 @@ section {
   white-space: wrap;
   width: 50%;
   vertical-align: top;
+  margin: 10px;
 }
 
 /* Positioning for the Font Awesome icon inside the button */
@@ -520,6 +532,7 @@ section {
   background-color: #f1f1f1;
   color: black;
   position: relative;
+  font-size: 14px;
 }
 .time-content {
   display: none;
@@ -528,6 +541,20 @@ section {
   color: black;
 }
 
+
+
+/* Style the collapsible content. Note: hidden by default */
+/* .time-content {
+  padding: 0 30px;
+  text-align: center;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  color: black;
+  position: absolute; 
+  top: 55px;
+  right: 70px;
+} */
 
 timeButtons{
   display: flex;
